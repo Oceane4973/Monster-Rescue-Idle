@@ -1,4 +1,4 @@
-extends Area3D
+extends Node3D
 
 @export var rotation_speed = PI / 2
 
@@ -16,7 +16,7 @@ func get_input_keyboard(delta):
 		y_rotation += 1
 	if Input.is_action_pressed("cam_left"):
 		y_rotation -= 1
-	$Espace.rotate_object_local(Vector3.UP, y_rotation * rotation_speed * delta)
+	rotate_object_local(Vector3.UP, y_rotation * rotation_speed * delta)
 	var x_rotation = 0
 	if Input.is_action_pressed("cam_up"):
 		x_rotation += 1
@@ -24,3 +24,8 @@ func get_input_keyboard(delta):
 		x_rotation -= 1
 	#rotate_object_local(Vector3.RIGHT, x_rotation * rotation_speed * delta)
 	$Espace.rotate_object_local(Vector3.RIGHT, x_rotation * rotation_speed * delta)
+	if($Espace.rotation.x < -1):
+		$Espace.rotation.x = -1
+	if($Espace.rotation.x > 0.5):
+		$Espace.rotation.x = 0.5
+	print( $Espace.rotation)
