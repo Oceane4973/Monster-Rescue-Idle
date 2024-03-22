@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpbe5iu43hik0"]
+
+[ext_resource type="Script" path="res://Essai.gd" id="1_n3qcp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hlbay"]
+
+[node name="Essai" type="Area3D"]
+script = ExtResource("1_n3qcp")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906823, 0.421511, 0, -0.421511, 0.906823, 0, 1.42191, 3)
+
+[node name="Espace" type="Node3D" parent="."]
+
+[node name="Boite" type="RigidBody3D" parent="Espace"]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Espace/Boite"]
+mesh = SubResource("BoxMesh_hlbay")
+
+[node name="Soleil" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.742206, -0.171278, 0.647915, -0.384572, 0.682918, 0.62107, -0.548849, -0.710132, 0.440997, 9, 10, 5)
