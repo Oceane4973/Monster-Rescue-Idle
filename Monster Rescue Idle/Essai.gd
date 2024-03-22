@@ -1,6 +1,13 @@
 extends Node3D
 
+# Référence : https://www.youtube.com/watch?app=desktop&v=4NLrfxNt3ps
+
 @export var rotation_speed = PI / 2
+@export var max_zoom = 3.0
+@export var min_zoom = 0.5
+@export var zoom_speed = 0.1
+
+var zoom = 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,6 +16,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	get_input_keyboard(delta)
+
+func _unhandled_input(event):
+	if event.is_action_pressed("cam_zoom_in"):
+		zoom -= zoom_speed
+	if event.is_action_pressed("cam_zoom_out"):
+		zoom += zoom_speed
+	zoom = clamp(zoom, min_zoom, max_zoom)
+	scale = Vector3.ONE * zoom
 
 func get_input_keyboard(delta):
 	var y_rotation = 0
@@ -28,4 +43,3 @@ func get_input_keyboard(delta):
 		$Espace.rotation.x = -1
 	if($Espace.rotation.x > 0.5):
 		$Espace.rotation.x = 0.5
-	print( $Espace.rotation)
