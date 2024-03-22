@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy6enojqfoj50"]
+
+[ext_resource type="PackedScene" uid="uid://bx4te5nsiqd76" path="res://Essai2.tscn" id="1_tpw1r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0vero"]
+
+[node name="Area3D" type="Area3D"]
+
+[node name="Soleil" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.742206, -0.171278, 0.647915, -0.384572, 0.682918, 0.62107, -0.548849, -0.710132, 0.440997, 9, 10, 5)
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4101, 0)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
+mesh = SubResource("BoxMesh_0vero")
+skeleton = NodePath("../../RigidBody3D2")
+
+[node name="Node3D" parent="." instance=ExtResource("1_tpw1r")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_0vero")
