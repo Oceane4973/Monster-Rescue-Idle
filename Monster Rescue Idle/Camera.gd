@@ -3,11 +3,11 @@ extends Node3D
 # Référence : https://www.youtube.com/watch?app=desktop&v=4NLrfxNt3ps
 
 @export var rotation_speed = PI / 2
-@export var max_zoom = 3.0
-@export var min_zoom = 0.5
+@export var max_zoom = 8.0
+@export var min_zoom = 3.0
 @export var zoom_speed = 0.1
 
-var zoom = 1.5
+var zoom = 8.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,5 +41,5 @@ func get_input_keyboard(delta):
 	$Centre.rotate_object_local(Vector3.RIGHT, x_rotation * rotation_speed * delta)
 	if($Centre.rotation.x < -1):
 		$Centre.rotation.x = -1
-	if($Centre.rotation.x > 0.5):
-		$Centre.rotation.x = 0.5
+	if($Centre.rotation.x > 0.3):
+		$Centre.rotation.x = 0.3
