@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cy6enojqfoj50"]
+[gd_scene load_steps=6 format=3 uid="uid://cy6enojqfoj50"]
 
-[ext_resource type="PackedScene" uid="uid://bx4te5nsiqd76" path="res://Essai2.tscn" id="1_tpw1r"]
+[ext_resource type="Script" path="res://Main.gd" id="1_h0ela"]
+[ext_resource type="PackedScene" uid="uid://bx4te5nsiqd76" path="res://Camera.tscn" id="1_tpw1r"]
+[ext_resource type="PackedScene" uid="uid://bt2duhrls634g" path="res://visiteur.tscn" id="2_544it"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0vero"]
 
+[sub_resource type="Curve3D" id="Curve3D_5jm08"]
+_data = {
+"points": PackedVector3Array(-1.67564, 0, -2.03802, 1.67564, 0, 2.03802, 0, 0, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.11304, 0, 1.15559, -1.11304, 0, -1.15559, -4, 0, 0, -1.09984, 0, 0.906244, 1.09984, 0, -0.906244, -4, 0, -4, -1.1186, 0, -0.906244, 1.1186, 0, 0.906244, 0, 0, -4),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="Area3D" type="Area3D"]
+script = ExtResource("1_h0ela")
 
 [node name="Soleil" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.742206, -0.171278, 0.647915, -0.384572, 0.682918, 0.62107, -0.548849, -0.710132, 0.440997, 9, 10, 5)
@@ -19,8 +29,6 @@ axis_lock_linear_z = true
 mesh = SubResource("BoxMesh_0vero")
 skeleton = NodePath("../../RigidBody3D2")
 
-[node name="Node3D" parent="." instance=ExtResource("1_tpw1r")]
-
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 axis_lock_linear_x = true
 axis_lock_linear_y = true
@@ -28,3 +36,15 @@ axis_lock_linear_z = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("BoxMesh_0vero")
+
+[node name="Camera" parent="." instance=ExtResource("1_tpw1r")]
+
+[node name="CheminVisiteurs" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+curve = SubResource("Curve3D_5jm08")
+
+[node name="SuiviChemin" type="PathFollow3D" parent="CheminVisiteurs"]
+transform = Transform3D(-0.886454, 0, 0.462812, 0, 1, 0, -0.462812, 0, -0.886454, 0.353403, 0, -0.547376)
+progress = 3.69751
+
+[node name="Visiteur" parent="CheminVisiteurs/SuiviChemin" instance=ExtResource("2_544it")]

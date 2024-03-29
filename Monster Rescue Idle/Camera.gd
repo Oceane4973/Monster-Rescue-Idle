@@ -38,8 +38,8 @@ func get_input_keyboard(delta):
 	if Input.is_action_pressed("cam_down"):
 		x_rotation -= 1
 	#rotate_object_local(Vector3.RIGHT, x_rotation * rotation_speed * delta)
-	$Espace.rotate_object_local(Vector3.RIGHT, x_rotation * rotation_speed * delta)
-	if($Espace.rotation.x < -1):
-		$Espace.rotation.x = -1
-	if($Espace.rotation.x > 0.5):
-		$Espace.rotation.x = 0.5
+	$Centre.rotate_object_local(Vector3.RIGHT, x_rotation * rotation_speed * delta)
+	if($Centre.rotation.x < -1):
+		$Centre.rotation.x = -1
+	if($Centre.rotation.x > 0.5):
+		$Centre.rotation.x = 0.5
