@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy6enojqfoj50"]
+[gd_scene load_steps=7 format=3 uid="uid://cy6enojqfoj50"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_h0ela"]
-[ext_resource type="PackedScene" uid="uid://bx4te5nsiqd76" path="res://Camera.tscn" id="1_tpw1r"]
-[ext_resource type="PackedScene" uid="uid://bt2duhrls634g" path="res://visiteur.tscn" id="2_544it"]
+[ext_resource type="PackedScene" uid="uid://bx4te5nsiqd76" path="res://assets/scenes/Camera.tscn" id="1_tpw1r"]
+[ext_resource type="PackedScene" uid="uid://bt2duhrls634g" path="res://assets/scenes/Visiteur.tscn" id="2_544it"]
+[ext_resource type="PackedScene" uid="uid://cjp2obn8vuwcw" path="res://assets/scenes/UI.tscn" id="4_r4evu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0vero"]
 
@@ -44,7 +45,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 curve = SubResource("Curve3D_5jm08")
 
 [node name="SuiviChemin" type="PathFollow3D" parent="CheminVisiteurs"]
-transform = Transform3D(-0.886454, 0, 0.462812, 0, 1, 0, -0.462812, 0, -0.886454, 0.353403, 0, -0.547376)
+transform = Transform3D(-0.886453, 0, 0.462813, 0, 1, 0, -0.462813, 0, -0.886453, 0.353402, 0, -0.547373)
 progress = 3.69751
 
 [node name="Visiteur" parent="CheminVisiteurs/SuiviChemin" instance=ExtResource("2_544it")]
+
+[node name="UI" parent="." instance=ExtResource("4_r4evu")]

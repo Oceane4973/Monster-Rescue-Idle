@@ -1,0 +1,109 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjp2obn8vuwcw"]
+
+[ext_resource type="Script" path="res://assets/scripts/UI.gd" id="1_ikc85"]
+[ext_resource type="Texture2D" uid="uid://dcxmkxho78mcb" path="res://assets/textures/MonstersIcon.png" id="2_gc2t5"]
+[ext_resource type="Texture2D" uid="uid://qwqyej2v2arq" path="res://assets/textures/PrestanceIcon.png" id="2_m7fdq"]
+[ext_resource type="Texture2D" uid="uid://b3qs2iqy1qdaj" path="res://assets/textures/MoneyIcon.png" id="3_r4vk8"]
+[ext_resource type="Texture2D" uid="uid://dlfjw6t2ki7xc" path="res://assets/textures/SettingsIcon.png" id="4_k21vj"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_ikc85")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="UpBar" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="GeneralInfo" type="HBoxContainer" parent="Control/MarginContainer/UpBar"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="MonstersSpace" type="HBoxContainer" parent="Control/MarginContainer/UpBar/GeneralInfo"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/UpBar/GeneralInfo/MonstersSpace"]
+layout_mode = 2
+texture = ExtResource("2_gc2t5")
+
+[node name="Monsters" type="Label" parent="Control/MarginContainer/UpBar/GeneralInfo/MonstersSpace"]
+layout_mode = 2
+text = "Monsters"
+
+[node name="PrestanceSpace" type="HBoxContainer" parent="Control/MarginContainer/UpBar/GeneralInfo"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/UpBar/GeneralInfo/PrestanceSpace"]
+layout_mode = 2
+texture = ExtResource("2_m7fdq")
+
+[node name="Prestance" type="Label" parent="Control/MarginContainer/UpBar/GeneralInfo/PrestanceSpace"]
+layout_mode = 2
+text = "Prestance"
+
+[node name="MoneySpace" type="HBoxContainer" parent="Control/MarginContainer/UpBar/GeneralInfo"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/UpBar/GeneralInfo/MoneySpace"]
+layout_mode = 2
+texture = ExtResource("3_r4vk8")
+expand_mode = 2
+
+[node name="MoneyDisplay" type="VBoxContainer" parent="Control/MarginContainer/UpBar/GeneralInfo/MoneySpace"]
+layout_mode = 2
+
+[node name="Money" type="Label" parent="Control/MarginContainer/UpBar/GeneralInfo/MoneySpace/MoneyDisplay"]
+layout_mode = 2
+text = "Money
+"
+
+[node name="MoneyPerSconds" type="Label" parent="Control/MarginContainer/UpBar/GeneralInfo/MoneySpace/MoneyDisplay"]
+layout_mode = 2
+text = "Money/s"
+
+[node name="SettingsButton" type="Button" parent="Control/MarginContainer/UpBar/GeneralInfo"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("4_k21vj")
+flat = true
+icon_alignment = 1
+
+[node name="Succeses" type="HBoxContainer" parent="Control/MarginContainer/UpBar"]
+layout_mode = 2
+
+[node name="DownBar" type="HBoxContainer" parent="Control/MarginContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Button" type="Button" parent="Control/MarginContainer/DownBar"]
+layout_mode = 2
+icon = ExtResource("2_gc2t5")
