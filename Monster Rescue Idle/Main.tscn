@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cy6enojqfoj50"]
+[gd_scene load_steps=24 format=3 uid="uid://cy6enojqfoj50"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_h0ela"]
 [ext_resource type="PackedScene" uid="uid://bx4te5nsiqd76" path="res://assets/scenes/Camera.tscn" id="1_tpw1r"]
 [ext_resource type="PackedScene" uid="uid://bt2duhrls634g" path="res://assets/scenes/Visiteur.tscn" id="2_544it"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="4_g82k1"]
+[ext_resource type="Resource" path="res://hterrain/data.hterrain" id="5_mbmye"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="6_mx348"]
 [ext_resource type="PackedScene" uid="uid://cjp2obn8vuwcw" path="res://assets/scenes/UI.tscn" id="4_r4evu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0vero"]
-
 [sub_resource type="Curve3D" id="Curve3D_5jm08"]
 _data = {
 "points": PackedVector3Array(-1.67564, 0, -2.03802, 1.67564, 0, 2.03802, 0, 0, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.11304, 0, 1.15559, -1.11304, 0, -1.15559, -4, 0, 0, -1.09984, 0, 0.906244, 1.09984, 0, -0.906244, -4, 0, -4, -1.1186, 0, -0.906244, 1.1186, 0, 0.906244, 0, 0, -4),
@@ -14,29 +16,272 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Resource" id="Resource_uubvj"]
+script = ExtResource("6_mx348")
+mode = 0
+textures = [[], []]
+
+[sub_resource type="Shader" id="Shader_bbo0o"]
+code = "
+// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable's ProceduralSkyMaterial.
+
+shader_type sky;
+render_mode use_debanding;
+
+uniform vec4 sky_top_color : source_color = vec4(0.385, 0.454, 0.55, 1.0);
+uniform vec4 sky_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float sky_curve : hint_range(0, 1) = 0.15;
+uniform float sky_energy = 1.0; // In Lux.
+uniform sampler2D sky_cover : filter_linear, source_color, hint_default_black;
+uniform vec4 sky_cover_modulate : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 ground_bottom_color : source_color = vec4(0.2, 0.169, 0.133, 1.0);
+uniform vec4 ground_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float ground_curve : hint_range(0, 1) = 0.02;
+uniform float ground_energy = 1.0;
+uniform float sun_angle_max = 30.0;
+uniform float sun_curve : hint_range(0, 1) = 0.15;
+
+uniform sampler2D cloud_texture;
+uniform sampler2D cloud_texture2;
+uniform vec2 cloud_direction;
+uniform vec2 cloud_direction2;
+uniform vec2 cloud_scale;
+uniform float cloud_distance;
+uniform float cloud_speed;
+uniform float cloud_speed2;
+
+void sky() {
+	float v_angle = acos(clamp(EYEDIR.y, -1.0, 1.0));
+	float c = (1.0 - v_angle / (PI * 0.5));
+	vec3 sky = mix(sky_horizon_color.rgb, sky_top_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / sky_curve), 0.0, 1.0));
+	sky *= sky_energy;
+
+	if (LIGHT0_ENABLED) {
+		float sun_angle = acos(dot(LIGHT0_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT0_SIZE) {
+			sky = LIGHT0_COLOR * LIGHT0_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT0_SIZE) / (sun_angle_max - LIGHT0_SIZE);
+			sky = mix(LIGHT0_COLOR * LIGHT0_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT1_ENABLED) {
+		float sun_angle = acos(dot(LIGHT1_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT1_SIZE) {
+			sky = LIGHT1_COLOR * LIGHT1_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT1_SIZE) / (sun_angle_max - LIGHT1_SIZE);
+			sky = mix(LIGHT1_COLOR * LIGHT1_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT2_ENABLED) {
+		float sun_angle = acos(dot(LIGHT2_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT2_SIZE) {
+			sky = LIGHT2_COLOR * LIGHT2_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT2_SIZE) / (sun_angle_max - LIGHT2_SIZE);
+			sky = mix(LIGHT2_COLOR * LIGHT2_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT3_ENABLED) {
+		float sun_angle = acos(dot(LIGHT3_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT3_SIZE) {
+			sky = LIGHT3_COLOR * LIGHT3_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT3_SIZE) / (sun_angle_max - LIGHT3_SIZE);
+			sky = mix(LIGHT3_COLOR * LIGHT3_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	vec4 sky_cover_texture = texture(sky_cover, SKY_COORDS);
+	sky += (sky_cover_texture.rgb * sky_cover_modulate.rgb) * sky_cover_texture.a * sky_cover_modulate.a * sky_energy;
+
+	c = (v_angle - (PI * 0.5)) / (PI * 0.5);
+	vec3 ground = mix(ground_horizon_color.rgb, ground_bottom_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / ground_curve), 0.0, 1.0));
+	ground *= ground_energy;
+
+	vec2 sky_uv = EYEDIR.xz / EYEDIR.y;
+    vec3 clouds = texture(cloud_texture, (sky_uv*cloud_scale) + (TIME*cloud_direction*cloud_speed*0.01)).rgb - texture(cloud_texture2, (sky_uv * cloud_scale) + (TIME * cloud_direction2 * cloud_speed2*0.01)).rgb;
+    clouds = clouds - smoothstep(0.0, EYEDIR.y, cloud_distance);
+    clouds = clamp(clouds,0,1);
+    sky += clouds;
+	
+	COLOR = mix(ground, sky, step(0.0, EYEDIR.y));
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xupf0"]
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uuywe"]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource("FastNoiseLite_xupf0")
+
+[sub_resource type="Gradient" id="Gradient_qh23y"]
+offsets = PackedFloat32Array(0.294118, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3xi0j"]
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6vpny"]
+seamless = true
+color_ramp = SubResource("Gradient_qh23y")
+noise = SubResource("FastNoiseLite_3xi0j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qrp5y"]
+shader = SubResource("Shader_bbo0o")
+shader_parameter/sky_top_color = Color(0.435294, 0.721569, 0.882353, 1)
+shader_parameter/sky_horizon_color = Color(0.784314, 0.886275, 0.941176, 1)
+shader_parameter/sky_curve = 0.2
+shader_parameter/sky_energy = 1.0
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/ground_bottom_color = Color(0.435294, 0.721569, 0.882353, 1)
+shader_parameter/ground_horizon_color = Color(0.784314, 0.886275, 0.941176, 1)
+shader_parameter/ground_curve = 0.02
+shader_parameter/ground_energy = 1.0
+shader_parameter/sun_angle_max = 0.523599
+shader_parameter/sun_curve = 0.15
+shader_parameter/cloud_direction = Vector2(-1, 1)
+shader_parameter/cloud_direction2 = Vector2(1, -1)
+shader_parameter/cloud_scale = Vector2(0.1, 0.1)
+shader_parameter/cloud_distance = 0.06
+shader_parameter/cloud_speed = 0.6
+shader_parameter/cloud_speed2 = 0.4
+shader_parameter/cloud_texture = SubResource("NoiseTexture2D_uuywe")
+shader_parameter/cloud_texture2 = SubResource("NoiseTexture2D_6vpny")
+
+[sub_resource type="Sky" id="Sky_fatam"]
+sky_material = SubResource("ShaderMaterial_qrp5y")
+
+[sub_resource type="Environment" id="Environment_g8fow"]
+background_mode = 2
+sky = SubResource("Sky_fatam")
+
+[sub_resource type="Shader" id="Shader_b1bae"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_always,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_refraction : filter_linear_mipmap,repeat_enable;
+uniform float refraction : hint_range(-16,16);
+uniform vec4 refraction_texture_channel;
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear_mipmap;uniform sampler2D texture_normal : hint_roughness_normal,filter_linear_mipmap,repeat_enable;
+uniform float normal_scale : hint_range(-16,16);
+varying vec3 uv1_triplanar_pos;
+uniform float uv1_blend_sharpness;
+varying vec3 uv1_power_normal;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
+	TANGENT = vec3(0.0,0.0,-1.0) * abs(normal.x);
+	TANGENT+= vec3(1.0,0.0,0.0) * abs(normal.y);
+	TANGENT+= vec3(1.0,0.0,0.0) * abs(normal.z);
+	TANGENT = inverse(MODEL_NORMAL_MATRIX) * normalize(TANGENT);
+	BINORMAL = vec3(0.0,1.0,0.0) * abs(normal.x);
+	BINORMAL+= vec3(0.0,0.0,-1.0) * abs(normal.y);
+	BINORMAL+= vec3(0.0,1.0,0.0) * abs(normal.z);
+	BINORMAL = inverse(MODEL_NORMAL_MATRIX) * normalize(BINORMAL);
+	uv1_power_normal=pow(abs(normal),vec3(uv1_blend_sharpness));
+	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0f)).xyz * uv1_scale + uv1_offset + TIME * 0.01;
+	uv1_power_normal/=dot(uv1_power_normal,vec3(1.0));
+	uv1_triplanar_pos *= vec3(1.0,-1.0, 1.0);
+}
+
+
+
+
+vec4 triplanar_texture(sampler2D p_sampler,vec3 p_weights,vec3 p_triplanar_pos) {
+	vec4 samp=vec4(0.0);
+	samp+= texture(p_sampler,p_triplanar_pos.xy) * p_weights.z;
+	samp+= texture(p_sampler,p_triplanar_pos.xz) * p_weights.y;
+	samp+= texture(p_sampler,p_triplanar_pos.zy * vec2(-1.0,1.0)) * p_weights.x;
+	return samp;
+}
+
+
+void fragment() {
+	vec4 albedo_tex = triplanar_texture(texture_albedo,uv1_power_normal,uv1_triplanar_pos);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(triplanar_texture(texture_metallic,uv1_power_normal,uv1_triplanar_pos),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(triplanar_texture(texture_roughness,uv1_power_normal,uv1_triplanar_pos),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMAL_MAP = triplanar_texture(texture_normal,uv1_power_normal,uv1_triplanar_pos).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+	vec3 unpacked_normal = NORMAL_MAP;
+	unpacked_normal.xy = unpacked_normal.xy * 2.0 - 1.0;
+	unpacked_normal.z = sqrt(max(0.0, 1.0 - dot(unpacked_normal.xy, unpacked_normal.xy)));
+	vec3 ref_normal = normalize( mix(NORMAL,TANGENT * unpacked_normal.x + BINORMAL * unpacked_normal.y + NORMAL * unpacked_normal.z,NORMAL_MAP_DEPTH) );
+	vec2 ref_ofs = SCREEN_UV - ref_normal.xy * dot(triplanar_texture(texture_refraction,uv1_power_normal,uv1_triplanar_pos),refraction_texture_channel) * refraction;
+	float ref_amount = 1.0 - albedo.a * albedo_tex.a;
+	EMISSION += textureLod(screen_texture,ref_ofs,ROUGHNESS * 8.0).rgb * ref_amount * EXPOSURE;
+	ALBEDO *= 1.0 - ref_amount;
+	ALPHA = 1.0;
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_125je"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3c837"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_125je")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vcfwp"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_125je")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_60yxy"]
+render_priority = 0
+shader = SubResource("Shader_b1bae")
+shader_parameter/albedo = Color(0.0470588, 0.317647, 0.466667, 0.505882)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/refraction = 0.05
+shader_parameter/refraction_texture_channel = null
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv1_scale = Vector3(0.04, 0.04, 0.04)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_refraction = SubResource("NoiseTexture2D_vcfwp")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_3c837")
+
+[sub_resource type="BoxMesh" id="BoxMesh_y8xqu"]
+material = SubResource("ShaderMaterial_60yxy")
+size = Vector3(1000, 1, 1000)
+
 [node name="Area3D" type="Area3D"]
 script = ExtResource("1_h0ela")
 
 [node name="Soleil" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.742206, -0.171278, 0.647915, -0.384572, 0.682918, 0.62107, -0.548849, -0.710132, 0.440997, 9, 10, 5)
-
-[node name="RigidBody3D2" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4101, 0)
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_linear_z = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
-mesh = SubResource("BoxMesh_0vero")
-skeleton = NodePath("../../RigidBody3D2")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_linear_z = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = SubResource("BoxMesh_0vero")
+transform = Transform3D(0.742206, -0.171278, 0.647915, -0.384572, 0.682918, 0.62107, -0.548849, -0.710131, 0.440997, 0, 0, 0)
 
 [node name="Camera" parent="." instance=ExtResource("1_tpw1r")]
 
@@ -50,4 +295,34 @@ progress = 3.69751
 
 [node name="Visiteur" parent="CheminVisiteurs/SuiviChemin" instance=ExtResource("2_544it")]
 
+[node name="Terrain" type="Node" parent="."]
+
+[node name="HTerrain" type="Node3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.975, -7, 10)
+script = ExtResource("4_g82k1")
+centered = true
+_terrain_data = ExtResource("5_mbmye")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_uubvj")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Terrain"]
+environment = SubResource("Environment_g8fow")
+
+[node name="water" type="MeshInstance3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.681025, 1.17575, 0)
+mesh = SubResource("BoxMesh_y8xqu")
+
 [node name="UI" parent="." instance=ExtResource("4_r4evu")]
+

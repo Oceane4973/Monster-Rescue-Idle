@@ -22,6 +22,10 @@ window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
+
 [input]
 
 cam_right={
