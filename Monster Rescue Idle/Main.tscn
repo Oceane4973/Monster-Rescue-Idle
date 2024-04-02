@@ -13,7 +13,7 @@ _data = {
 }
 point_count = 5
 
-[node name="Area3D" type="Area3D"]
+[node name="Area3D" type="Area3D" groups=["Persist"]]
 script = ExtResource("1_h0ela")
 
 [node name="Soleil" type="DirectionalLight3D" parent="."]
@@ -44,7 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 curve = SubResource("Curve3D_5jm08")
 
 [node name="SuiviChemin" type="PathFollow3D" parent="CheminVisiteurs"]
-transform = Transform3D(-0.886454, 0, 0.462812, 0, 1, 0, -0.462812, 0, -0.886454, 0.353403, 0, -0.547376)
+transform = Transform3D(-0.886453, 0, 0.462813, 0, 1, 0, -0.462813, 0, -0.886453, 0.353402, 0, -0.547373)
 progress = 3.69751
 
 [node name="Visiteur" parent="CheminVisiteurs/SuiviChemin" instance=ExtResource("2_544it")]
