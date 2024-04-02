@@ -1,10 +1,83 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjp2obn8vuwcw"]
+[gd_scene load_steps=13 format=3 uid="uid://cjp2obn8vuwcw"]
 
 [ext_resource type="Script" path="res://assets/scripts/UI.gd" id="1_ikc85"]
-[ext_resource type="Texture2D" path="res://assets/textures/MonstersIcon.png" id="2_gc2t5"]
-[ext_resource type="Texture2D" path="res://assets/textures/PrestanceIcon.png" id="2_m7fdq"]
-[ext_resource type="Texture2D" path="res://assets/textures/MoneyIcon.png" id="3_r4vk8"]
-[ext_resource type="Texture2D" path="res://assets/textures/SettingsIcon.png" id="4_k21vj"]
+[ext_resource type="Texture2D" uid="uid://ngf38tu0xk6v" path="res://assets/textures/avatar.png" id="2_gc2t5"]
+[ext_resource type="Texture2D" uid="uid://taeadiw7ib46" path="res://assets/textures/favoris.png" id="2_m7fdq"]
+[ext_resource type="Texture2D" uid="uid://dxwslnpm4hc3m" path="res://assets/textures/cristaux.png" id="3_r4vk8"]
+[ext_resource type="Texture2D" uid="uid://cc1iyj01lf82o" path="res://assets/textures/parametres.png" id="4_k21vj"]
+[ext_resource type="Texture2D" uid="uid://d26tpkv21rqih" path="res://assets/textures/reussite.png" id="6_7h67r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmvg4"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cgmm"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+expand_margin_left = 5.0
+expand_margin_top = 20.0
+expand_margin_right = 5.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0o5gd"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_euih8"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5y4r"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28de6"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_ikc85")
@@ -17,7 +90,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="GlobalMargin" type="MarginContainer" parent="Control"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 1
 anchors_preset = 15
@@ -25,85 +98,207 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
-[node name="UpBar" type="VBoxContainer" parent="Control/MarginContainer"]
+[node name="TopBar" type="PanelContainer" parent="Control/GlobalMargin"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmvg4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GlobalMargin/TopBar"]
+layout_mode = 2
+
+[node name="Bar" type="MarginContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer"]
+layout_mode = 2
+
+[node name="Background" type="Panel" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_0cgmm")
+
+[node name="Informations" type="HBoxContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MonsterIndicator" type="PanelContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 6
+auto_translate = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_0o5gd")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MonsterIndicator"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MonsterIndicator/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="GeneralInfo" type="HBoxContainer" parent="Control/MarginContainer/UpBar"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-alignment = 1
-
-[node name="MonstersSpace" type="HBoxContainer" parent="Control/MarginContainer/UpBar/GeneralInfo"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/UpBar/GeneralInfo/MonstersSpace"]
+[node name="Icon" type="TextureRect" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MonsterIndicator/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 texture = ExtResource("2_gc2t5")
+expand_mode = 2
 
-[node name="Monsters" type="Label" parent="Control/MarginContainer/UpBar/GeneralInfo/MonstersSpace"]
+[node name="MonsterCountLabel" type="Label" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MonsterIndicator/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Monsters"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "102"
 
-[node name="PrestanceSpace" type="HBoxContainer" parent="Control/MarginContainer/UpBar/GeneralInfo"]
+[node name="PrestanceIndicator" type="PanelContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations"]
+clip_contents = true
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 6
+auto_translate = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_0o5gd")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/PrestanceIndicator"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
 
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/UpBar/GeneralInfo/PrestanceSpace"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/PrestanceIndicator/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/PrestanceIndicator/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 texture = ExtResource("2_m7fdq")
+expand_mode = 2
 
-[node name="Prestance" type="Label" parent="Control/MarginContainer/UpBar/GeneralInfo/PrestanceSpace"]
+[node name="PrestanceLabel" type="Label" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/PrestanceIndicator/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Prestance"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "150"
 
-[node name="MoneySpace" type="HBoxContainer" parent="Control/MarginContainer/UpBar/GeneralInfo"]
+[node name="MoneyIndicator" type="PanelContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_euih8")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer"]
+layout_mode = 2
+
+[node name="TotalMoney" type="HBoxContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/UpBar/GeneralInfo/MoneySpace"]
+[node name="Icon" type="TextureRect" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer/VBoxContainer/TotalMoney"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 texture = ExtResource("3_r4vk8")
 expand_mode = 2
 
-[node name="MoneyDisplay" type="VBoxContainer" parent="Control/MarginContainer/UpBar/GeneralInfo/MoneySpace"]
+[node name="MoneyLabel" type="Label" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer/VBoxContainer/TotalMoney"]
+unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "0"
 
-[node name="Money" type="Label" parent="Control/MarginContainer/UpBar/GeneralInfo/MoneySpace/MoneyDisplay"]
-layout_mode = 2
-text = "Money
-"
-
-[node name="MoneyPerSconds" type="Label" parent="Control/MarginContainer/UpBar/GeneralInfo/MoneySpace/MoneyDisplay"]
-layout_mode = 2
-text = "Money/s"
-
-[node name="SettingsButton" type="Button" parent="Control/MarginContainer/UpBar/GeneralInfo"]
+[node name="MoneyPerSec" type="HBoxContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-icon = ExtResource("4_k21vj")
-flat = true
-icon_alignment = 1
+size_flags_vertical = 0
 
-[node name="Succeses" type="HBoxContainer" parent="Control/MarginContainer/UpBar"]
+[node name="Icon" type="TextureRect" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer/VBoxContainer/MoneyPerSec"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
+texture = ExtResource("3_r4vk8")
+expand_mode = 2
 
-[node name="DownBar" type="HBoxContainer" parent="Control/MarginContainer"]
+[node name="MoneyPerSecLabel" type="Label" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer/VBoxContainer/MoneyPerSec"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "0"
+
+[node name="Settings" type="PanelContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_o5y4r")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/Settings/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/Settings/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("4_k21vj")
+expand_mode = 2
+
+[node name="ButtonFloat" type="PanelContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_28de6")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/ButtonFloat"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Success" type="HBoxContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/ButtonFloat/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="Control/GlobalMargin/TopBar/VBoxContainer/ButtonFloat/MarginContainer/Success"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("6_7h67r")
+expand_mode = 2
+
+[node name="BottomBar" type="HBoxContainer" parent="Control/GlobalMargin"]
+visible = false
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Button" type="Button" parent="Control/MarginContainer/DownBar"]
+[node name="Button" type="Button" parent="Control/GlobalMargin/BottomBar"]
 layout_mode = 2
 icon = ExtResource("2_gc2t5")
+flat = true
