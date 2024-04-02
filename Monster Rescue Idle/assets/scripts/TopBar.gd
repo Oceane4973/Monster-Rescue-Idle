@@ -1,8 +1,8 @@
 extends CanvasLayer
 class_name UI
 
-@onready var money_label = $Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer/VBoxContainer/TotalMoney/MoneyLabel
-@onready var prestance_label = $Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/PrestanceIndicator/MarginContainer/HBoxContainer/PrestanceLabel
+@onready var money_label = $Control/MarginContainer/Information/Money/MoneyLabel
+@onready var prestance_label = $Control/MarginContainer/Information/Prestance/PrestanceLabel
 
 var money = 0:
 	set(new_money):
@@ -30,4 +30,3 @@ func _ready():
 func _process(delta):
 	#pass
 	prestance += 1
-	money += 1
