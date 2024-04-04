@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjp2obn8vuwcw"]
+[gd_scene load_steps=20 format=3 uid="uid://cjp2obn8vuwcw"]
 
 [ext_resource type="Script" path="res://assets/scripts/UI.gd" id="1_ikc85"]
 [ext_resource type="Texture2D" uid="uid://ngf38tu0xk6v" path="res://assets/textures/avatar.png" id="2_gc2t5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dxwslnpm4hc3m" path="res://assets/textures/cristaux.png" id="3_r4vk8"]
 [ext_resource type="Texture2D" uid="uid://cc1iyj01lf82o" path="res://assets/textures/parametres.png" id="4_k21vj"]
 [ext_resource type="Texture2D" uid="uid://d26tpkv21rqih" path="res://assets/textures/reussite.png" id="6_7h67r"]
+[ext_resource type="Texture2D" uid="uid://deb23nemy4vqo" path="res://assets/textures/vers-le-haut.png" id="7_wdlyg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmvg4"]
 bg_color = Color(1, 1, 1, 0)
@@ -48,10 +49,10 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 border_blend = true
-corner_radius_top_left = 26
-corner_radius_top_right = 26
-corner_radius_bottom_right = 26
-corner_radius_bottom_left = 26
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5y4r"]
 bg_color = Color(1, 1, 1, 1)
@@ -79,6 +80,77 @@ corner_radius_top_right = 14
 corner_radius_bottom_right = 14
 corner_radius_bottom_left = 14
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w68vp"]
+content_margin_left = 25.0
+content_margin_top = 5.0
+content_margin_right = 25.0
+content_margin_bottom = 5.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hehfg"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jnwe"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqxqo"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4s6dd"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsof2"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_ikc85")
 
@@ -89,6 +161,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="GlobalMargin" type="MarginContainer" parent="Control"]
 custom_minimum_size = Vector2(0, 50)
@@ -153,7 +227,7 @@ expand_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
 text = "102"
 
 [node name="PrestanceIndicator" type="PanelContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations"]
@@ -186,7 +260,7 @@ expand_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
 text = "150"
 
 [node name="MoneyIndicator" type="PanelContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations"]
@@ -222,7 +296,7 @@ expand_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 22
 text = "0"
 
 [node name="MoneyPerSec" type="HBoxContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer/VBoxContainer"]
@@ -240,7 +314,7 @@ expand_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
 text = "0"
 
 [node name="Settings" type="PanelContainer" parent="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations"]
@@ -287,18 +361,162 @@ layout_mode = 2
 size_flags_vertical = 0
 
 [node name="Icon" type="TextureRect" parent="Control/GlobalMargin/TopBar/VBoxContainer/ButtonFloat/MarginContainer/Success"]
-custom_minimum_size = Vector2(20, 20)
+custom_minimum_size = Vector2(24, 22)
 layout_mode = 2
 texture = ExtResource("6_7h67r")
 expand_mode = 2
 
-[node name="BottomBar" type="HBoxContainer" parent="Control/GlobalMargin"]
-visible = false
+[node name="BottomBar" type="VBoxContainer" parent="Control/GlobalMargin"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/GlobalMargin/BottomBar"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 115
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/GlobalMargin/BottomBar/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_w68vp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GlobalMargin/BottomBar/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="Icon" type="TextureRect" parent="Control/GlobalMargin/BottomBar/MarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_wdlyg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/GlobalMargin/BottomBar/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Afficher plus"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/GlobalMargin/BottomBar"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_constants/separation = 10
 
-[node name="Button" type="Button" parent="Control/GlobalMargin/BottomBar"]
+[node name="MonstersButton" type="PanelContainer" parent="Control/GlobalMargin/BottomBar/HBoxContainer"]
 layout_mode = 2
-icon = ExtResource("2_gc2t5")
-flat = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_hehfg")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/GlobalMargin/BottomBar/HBoxContainer/MonstersButton"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Icon" type="TextureRect" parent="Control/GlobalMargin/BottomBar/HBoxContainer/MonstersButton/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_gc2t5")
+expand_mode = 2
+
+[node name="BuildButton" type="PanelContainer" parent="Control/GlobalMargin/BottomBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_4jnwe")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Preview" type="PanelContainer" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bqxqo")
+
+[node name="LevelContainer" type="PanelContainer" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer/Preview"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_4s6dd")
+
+[node name="Label" type="Label" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer/Preview/LevelContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "LV. 999"
+horizontal_alignment = 1
+
+[node name="Description" type="VBoxContainer" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = -1
+
+[node name="Benefice" type="Label" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer/Description"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "+200
+"
+
+[node name="DescriptionLabel" type="Label" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer/Description"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Augmentation de l'infrastructure XXXXXXXXX 
+"
+autowrap_mode = 2
+
+[node name="BuyButton" type="PanelContainer" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xsof2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer/BuyButton"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer/BuyButton/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer/BuyButton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Niveau sup."
+horizontal_alignment = 1
+
+[node name="MoneyPerSec" type="HBoxContainer" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer/BuyButton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer/BuyButton/MarginContainer/VBoxContainer/MoneyPerSec"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("3_r4vk8")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/GlobalMargin/BottomBar/HBoxContainer/BuildButton/MarginContainer/HBoxContainer/BuyButton/MarginContainer/VBoxContainer/MoneyPerSec"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "9811"
