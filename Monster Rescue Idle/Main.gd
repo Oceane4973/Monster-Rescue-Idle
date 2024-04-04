@@ -42,6 +42,7 @@ func saveGame() -> void:
 
 		# Store the save dictionary as a new line in the save file.
 		save_game.store_line(json_string)
+	print("Saving succeeded")
 
 func loadGame() -> void:
 	if save_file_exists() == false:
