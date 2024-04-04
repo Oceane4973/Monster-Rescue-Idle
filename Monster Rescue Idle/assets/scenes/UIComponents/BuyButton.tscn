@@ -20,8 +20,8 @@ corner_radius_bottom_left = 30
 script = ExtResource("1_bwgx1")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 130.0
+offset_bottom = 63.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 theme_override_styles/panel = SubResource("StyleBoxFlat_un3jb")
