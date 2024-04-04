@@ -12,15 +12,19 @@ config_version=5
 
 config/name="Monster Rescue Idle"
 config/features=PackedStringArray("4.2", "Forward Plus")
-boot_splash/image="res://Assets/Bootsplash_creen.png"
+boot_splash/image="res://assets/Bootsplash_creen.png"
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=720
+window/size/viewport_width=600
+window/size/viewport_height=1024
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
 
 [input]
 
