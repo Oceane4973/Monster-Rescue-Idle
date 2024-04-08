@@ -1,11 +1,13 @@
 extends Node3D
 
-# Référence : https://www.youtube.com/watch?app=desktop&v=4NLrfxNt3ps
+# Référence : https://finepointcgi.io/2023/06/16/building-a-touchscreen-camera-in-godot-4-a-comprehensive-guide/
 
 @export var rotation_speed = PI / 2
 @export var max_zoom = 8.0
 @export var min_zoom = 3.0
 @export var zoom_speed = 0.1
+var start_dist: float
+var touch_points: Dictionary = {}
 
 var zoom = 8.0
 
@@ -17,7 +19,27 @@ func _ready():
 func _process(delta):
 	get_input_keyboard(delta)
 
+func _handle_touch(event: InputEventScreenTouch):
+	if touch_points.size() == 2:
+		var touch_point_positions = touch_points.values()
+		start_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
+		start_dist = 0
+	return
+
+func _handle_drag(event: InputEventScreenDrag):
+	touch_points[event.index] = event.position
+	# Handle 2 touch points
+	if touch_points.size() == 2:
+		var touch_point_positions = touch_points.values()
+		var current_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
+		var zoom_factor = start_dist / current_dist
+		zoom = zoom / zoom_factor
+
 func _unhandled_input(event):
+	if event is InputEventScreenTouch:
+		_handle_touch(event)
+	elif event is InputEventScreenDrag:
+		_handle_drag(event)
 	if event.is_action_pressed("cam_zoom_in"):
 		zoom -= zoom_speed
 	if event.is_action_pressed("cam_zoom_out"):
