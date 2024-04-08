@@ -25,19 +25,23 @@ func _ready():
 	_update_money_label()
 	_update_prestance_label()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#pass
 	prestance += 1
 	money += 1
-	
-	
-
-
 
 func _on_setting_button_pressed():
-		$Control/SettingsPopup/SettingsPopupAnimation.play("popup")
+	$Control/SettingsPopup/SettingsPopupAnimation.play("popup")
 
 func _on_close_settings_popup_pressed():
 	$Control/SettingsPopup/SettingsPopupAnimation.play_backwards("popup")
+
+func save():
+	var value = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"money" : money,
+		"prestance" : prestance
+	}
+	return value

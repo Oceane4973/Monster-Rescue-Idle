@@ -230,7 +230,7 @@ _data = {
 "popup": SubResource("Animation_uuk3t")
 }
 
-[node name="UI" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer" groups=["Persist"]]
 script = ExtResource("1_ikc85")
 
 [node name="Control" type="Control" parent="."]
