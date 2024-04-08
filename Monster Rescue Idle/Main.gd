@@ -8,10 +8,6 @@ const move_speed := 4.0
 func _ready():
 	loadGame();
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _physics_process(delta):
 	$CheminVisiteurs/SuiviChemin.progress += move_speed * delta
 
