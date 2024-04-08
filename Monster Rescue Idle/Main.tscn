@@ -10,10 +10,10 @@
 
 [sub_resource type="Curve3D" id="Curve3D_5jm08"]
 _data = {
-"points": PackedVector3Array(-1.67564, 0, -2.03802, 1.67564, 0, 2.03802, 0, 0, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.11304, 0, 1.15559, -1.11304, 0, -1.15559, -4, 0, 0, -1.09984, 0, 0.906244, 1.09984, 0, -0.906244, -4, 0, -4, -1.1186, 0, -0.906244, 1.1186, 0, 0.906244, 0, 0, -4),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+"points": PackedVector3Array(-1.67564, 0, -2.03802, 0, 0, 0, 8.98585, 0.0578332, -15.3548, 0, 0, 0, 0, 0, 0, 13.2649, 0.241322, 2.77464, 0, 0, 0, 0, 0, 0, -8.49666, 0.122729, 3.87074, 0, 0, 0, 0, 0, -0.906, -12.5165, 0.0511723, -6.62087, -0.47617, -0.35975, -0.399559, 0, 0, 0, -8.8807, -0.0595751, -19.6777, 0, 0, 0, 0, 0, 0, -8.10496, 0.0396643, -27.3542, 0, 0, 0, 0, 0, 0, 8.986, 0.058, -15.355),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 5
+point_count = 7
 
 [sub_resource type="Resource" id="Resource_uubvj"]
 script = ExtResource("6_mx348")
@@ -285,11 +285,11 @@ transform = Transform3D(0.742206, -0.171278, 0.647915, -0.384572, 0.682918, 0.62
 [node name="Camera" parent="." instance=ExtResource("1_tpw1r")]
 
 [node name="CheminVisiteurs" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.79476, 3.19511, 6.05627)
 curve = SubResource("Curve3D_5jm08")
 
 [node name="SuiviChemin" type="PathFollow3D" parent="CheminVisiteurs"]
-transform = Transform3D(-0.886453, 0, 0.462813, 0, 1, 0, -0.462813, 0, -0.886453, 0.353402, 0, -0.547373)
+transform = Transform3D(-0.973254, -0.00226383, -0.229707, -1.15297e-06, 0.999951, -0.00984989, 0.229718, -0.00958624, -0.973207, 9.83511, 0.0942499, -11.7567)
 progress = 3.69751
 
 [node name="Visiteur" parent="CheminVisiteurs/SuiviChemin" instance=ExtResource("2_544it")]

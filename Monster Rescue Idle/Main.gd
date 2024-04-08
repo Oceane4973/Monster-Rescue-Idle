@@ -78,7 +78,8 @@ func loadGame() -> void:
 			# Firstly, we need to create the object and add it to the tree and set its position.
 			var new_object = load(node_data["filename"]).instantiate()
 			get_node(node_data["parent"]).add_child(new_object)
-			new_object.position = Vector3(node_data["pos_x"], node_data["pos_y"], node_data["pos_z"])
+			if "pos_x" in node_data && "pos_y" in node_data && "pos_z" in node_data:
+				new_object.position = Vector3(node_data["pos_x"], node_data["pos_y"], node_data["pos_z"])
 
 			# Now we set the remaining variables.
 			for i in node_data.keys():
