@@ -834,4 +834,3 @@ libraries = {
 [connection signal="gui_input" from="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/Settings" to="." method="_on_settings_gui_input"]
 [connection signal="pressed" from="Control/GlobalMargin/TopBar/VBoxContainer/Bar/Informations/Settings/SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="Control/SettingsPopup/VBoxContainer/TopBar/MarginContainer/CloseSettingsPopup" to="." method="_on_close_settings_popup_pressed"]
-

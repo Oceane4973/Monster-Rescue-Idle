@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bx4te5nsiqd76" path="res://assets/scenes/Camera.tscn" id="1_tpw1r"]
 [ext_resource type="PackedScene" uid="uid://bt2duhrls634g" path="res://assets/scenes/Visiteur.tscn" id="2_544it"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="4_g82k1"]
-[ext_resource type="PackedScene" uid="uid://cjp2obn8vuwcw" path="res://assets/scenes/UIComponents/UI.tscn" id="4_r4evu"]
+[ext_resource type="PackedScene" uid="uid://cjp2obn8vuwcw" path="res://assets/scenes/UI.tscn" id="4_r4evu"]
 [ext_resource type="Resource" path="res://hterrain/data.hterrain" id="5_mbmye"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="6_mx348"]
 
@@ -294,8 +294,6 @@ progress = 3.69751
 
 [node name="Visiteur" parent="CheminVisiteurs/SuiviChemin" instance=ExtResource("2_544it")]
 
-[node name="UI" parent="." instance=ExtResource("4_r4evu")]
-
 [node name="Terrain" type="Node" parent="."]
 
 [node name="HTerrain" type="Node3D" parent="Terrain"]
@@ -324,3 +322,5 @@ environment = SubResource("Environment_g8fow")
 [node name="water" type="MeshInstance3D" parent="Terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.681025, 1.17575, 0)
 mesh = SubResource("BoxMesh_y8xqu")
+
+[node name="UI" parent="." instance=ExtResource("4_r4evu")]
