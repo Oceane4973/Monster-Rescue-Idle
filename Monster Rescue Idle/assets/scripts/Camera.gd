@@ -40,10 +40,10 @@ func _handle_drag(event: InputEventScreenDrag):
 		zoom = zoom / zoom_factor
 
 func _input(event):
-	if event is InputEventScreenTouch:
-		_handle_touch(event)
-	elif event is InputEventScreenDrag:
+	if event is InputEventScreenDrag:
 		_handle_drag(event)
+	elif event is InputEventScreenTouch:
+		_handle_touch(event)
 
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
