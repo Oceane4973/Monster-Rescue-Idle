@@ -16,4 +16,5 @@ script = ExtResource("1_4q5hx")
 
 [node name="Camera3D" type="Camera3D" parent="Centre"]
 transform = Transform3D(1, 0, 0, 0, 0.906823, 0.421511, 0, -0.421511, 0.906823, 0, 2.42191, 4)
+current = true
 script = SubResource("GDScript_cm81x")

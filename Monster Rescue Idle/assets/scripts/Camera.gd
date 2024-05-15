@@ -46,6 +46,10 @@ func _input(event):
 		_handle_drag(event)
 
 func _unhandled_input(event):
+	if event is InputEventScreenTouch:
+		_handle_touch(event)
+	elif event is InputEventScreenDrag:
+		_handle_drag(event)
 	if event.is_action_pressed("cam_zoom_in"):
 		zoom -= zoom_speed
 	if event.is_action_pressed("cam_zoom_out"):
