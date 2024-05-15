@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://chrjiy74rok4j"]
 
-[ext_resource type="Script" path="res://assets/scripts/TopBar.gd" id="1_akxcg"]
+[ext_resource type="Script" path="res://assets/scripts/UIComponents/Bar/TopBar.gd" id="1_akxcg"]
 [ext_resource type="Texture2D" uid="uid://dxwslnpm4hc3m" path="res://assets/textures/cristaux.png" id="2_cyigj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un3jb"]
