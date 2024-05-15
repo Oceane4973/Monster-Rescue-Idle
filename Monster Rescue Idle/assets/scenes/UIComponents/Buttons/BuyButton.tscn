@@ -1,9 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bycuo5ehx37os"]
+[gd_scene load_steps=3 format=3 uid="uid://drr2nh6igo752"]
 
-[ext_resource type="Script" path="res://assets/scripts/UIComponents/UI.gd" id="1_bwgx1"]
 [ext_resource type="Texture2D" uid="uid://dxwslnpm4hc3m" path="res://assets/textures/cristaux.png" id="2_0qvj7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un3jb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1yxg"]
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 1
 border_width_top = 1
@@ -11,53 +10,46 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 border_blend = true
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
-[node name="BuyButton" type="CanvasLayer"]
-script = ExtResource("1_bwgx1")
+[node name="BuyButton" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_h1yxg")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-offset_right = 130.0
-offset_bottom = 63.0
-size_flags_horizontal = 3
-size_flags_vertical = 6
-theme_override_styles/panel = SubResource("StyleBoxFlat_un3jb")
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 18
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 18
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 16
 text = "Niveau sup."
-vertical_alignment = 1
+horizontal_alignment = 1
 
-[node name="MoneyPerSec" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MoneyPerSec" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Icon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MoneyPerSec"]
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/MoneyPerSec"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 texture = ExtResource("2_0qvj7")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MoneyPerSec"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MoneyPerSec"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
-text = "981"
+theme_override_font_sizes/font_size = 22
+text = "9811"

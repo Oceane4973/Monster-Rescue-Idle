@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bppf23giu6373"]
+[gd_scene load_steps=10 format=3 uid="uid://bsyly5svxgqvd"]
 
-[ext_resource type="Script" path="res://assets/scripts/UIComponents/Popup/MonstersPopupAnimation.gd" id="1_ko404"]
-[ext_resource type="Texture2D" uid="uid://bqal21yy8jd2k" path="res://assets/textures/x.png" id="2_itjj8"]
-[ext_resource type="StyleBox" uid="uid://cwdipwhjp0uyr" path="res://assets/textures/transparent_style_box_flat.tres" id="3_f2qu4"]
+[ext_resource type="Script" path="res://assets/scripts/UIComponents/Popup/MonstersPopupAnimation.gd" id="1_ac7lf"]
+[ext_resource type="Texture2D" uid="uid://bqal21yy8jd2k" path="res://assets/textures/x.png" id="2_bodld"]
+[ext_resource type="StyleBox" uid="uid://cwdipwhjp0uyr" path="res://assets/textures/transparent_style_box_flat.tres" id="3_0cqk6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dna2s"]
 content_margin_left = 20.0
@@ -83,7 +83,7 @@ _data = {
 }
 
 [node name="MonstersPopup" type="CanvasLayer"]
-script = ExtResource("1_ko404")
+script = ExtResource("1_ac7lf")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -111,6 +111,7 @@ offset_right = 175.0
 offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(171, 62)
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -143,16 +144,16 @@ theme_override_constants/margin_bottom = 10
 [node name="Icon" type="TextureRect" parent="Control/PanelContainer/VBoxContainer/TopBar/MarginContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-texture = ExtResource("2_itjj8")
+texture = ExtResource("2_bodld")
 expand_mode = 4
 
 [node name="CloseMonstersPopup" type="Button" parent="Control/PanelContainer/VBoxContainer/TopBar/MarginContainer"]
 layout_mode = 2
-theme_override_styles/normal = ExtResource("3_f2qu4")
-theme_override_styles/hover = ExtResource("3_f2qu4")
-theme_override_styles/pressed = ExtResource("3_f2qu4")
-theme_override_styles/disabled = ExtResource("3_f2qu4")
-theme_override_styles/focus = ExtResource("3_f2qu4")
+theme_override_styles/normal = ExtResource("3_0cqk6")
+theme_override_styles/hover = ExtResource("3_0cqk6")
+theme_override_styles/pressed = ExtResource("3_0cqk6")
+theme_override_styles/disabled = ExtResource("3_0cqk6")
+theme_override_styles/focus = ExtResource("3_0cqk6")
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/PanelContainer/VBoxContainer"]
 layout_mode = 2

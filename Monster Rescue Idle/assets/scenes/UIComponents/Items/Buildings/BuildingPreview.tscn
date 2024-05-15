@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4iktin3cbhm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy147"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cv4p8"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="BuildingPreview" type="PanelContainer"]
+custom_minimum_size = Vector2(80, 90)
+theme_override_styles/panel = SubResource("StyleBoxFlat_cy147")
+
+[node name="LevelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_cv4p8")
+
+[node name="Label" type="Label" parent="LevelContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "LV. 999"
+horizontal_alignment = 1

@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://y0tpk0qp1dxd"]
+
+[ext_resource type="Texture2D" uid="uid://taeadiw7ib46" path="res://assets/textures/favoris.png" id="1_3sskq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsmoc"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="PrestanceIndicator" type="PanelContainer"]
+clip_contents = true
+size_flags_vertical = 6
+auto_translate = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_xsmoc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("1_3sskq")
+expand_mode = 2
+
+[node name="PrestanceLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "150"

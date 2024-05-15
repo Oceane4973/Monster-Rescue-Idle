@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw1c51lhmvbv1"]
+
+[ext_resource type="Texture2D" uid="uid://deb23nemy4vqo" path="res://assets/textures/vers-le-haut.png" id="1_kl1kg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjt20"]
+content_margin_left = 25.0
+content_margin_top = 5.0
+content_margin_right = 25.0
+content_margin_bottom = 5.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[node name="MoreButton" type="PanelContainer"]
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_kjt20")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_kl1kg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Afficher plus"

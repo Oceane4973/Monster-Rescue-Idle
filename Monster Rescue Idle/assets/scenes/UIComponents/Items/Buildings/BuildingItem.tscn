@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2utwockrlnbi"]
+
+[ext_resource type="PackedScene" uid="uid://b4iktin3cbhm" path="res://assets/scenes/UIComponents/Items/Buildings/BuildingPreview.tscn" id="1_xbjb1"]
+[ext_resource type="PackedScene" uid="uid://cm5f0rd5dpdqk" path="res://assets/scenes/UIComponents/Items/Buildings/BuildingDescription.tscn" id="2_0rbwf"]
+[ext_resource type="PackedScene" uid="uid://drr2nh6igo752" path="res://assets/scenes/UIComponents/Buttons/BuyButton.tscn" id="3_mpq2w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iqrx"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="BuildingItem" type="PanelContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_0iqrx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="BuildingPreview" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_xbjb1")]
+layout_mode = 2
+
+[node name="BuildingDescription" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_0rbwf")]
+layout_mode = 2
+
+[node name="BuyButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_mpq2w")]
+layout_mode = 2

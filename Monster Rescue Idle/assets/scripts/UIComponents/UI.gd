@@ -1,8 +1,8 @@
 extends CanvasLayer
 class_name UI
 
-@onready var money_label = $Control/GlobalMargin/TopBar/Control/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer/VBoxContainer/TotalMoney/MoneyLabel
-@onready var prestance_label = $Control/GlobalMargin/TopBar/Control/TopBar/VBoxContainer/Bar/Informations/PrestanceIndicator/MarginContainer/HBoxContainer/PrestanceLabel
+@onready var money_label = $Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer/VBoxContainer/TotalMoney/MoneyLabel
+@onready var prestance_label = $Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/PrestanceIndicator/MarginContainer/HBoxContainer/PrestanceLabel
 
 var money = 0:
 	set(new_money):
