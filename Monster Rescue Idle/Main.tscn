@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bx4te5nsiqd76" path="res://assets/scenes/Camera.tscn" id="1_tpw1r"]
 [ext_resource type="PackedScene" uid="uid://bt2duhrls634g" path="res://assets/scenes/Visiteur.tscn" id="2_544it"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="4_g82k1"]
-[ext_resource type="PackedScene" uid="uid://cjp2obn8vuwcw" path="res://assets/scenes/UI.tscn" id="4_r4evu"]
+[ext_resource type="PackedScene" uid="uid://dwqgbh2u4ior2" path="res://assets/scenes/UIComponents/UI.tscn" id="4_r4evu"]
 [ext_resource type="Resource" path="res://hterrain/data.hterrain" id="5_mbmye"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="6_mx348"]
 
@@ -289,7 +289,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.79476, 3.19511, 6.05627)
 curve = SubResource("Curve3D_5jm08")
 
 [node name="SuiviChemin" type="PathFollow3D" parent="CheminVisiteurs"]
-transform = Transform3D(-0.973255, -0.00226268, -0.229704, -2.3283e-10, 0.999951, -0.00984988, 0.229715, -0.00958649, -0.973208, 9.8351, 0.0942498, -11.7567)
+transform = Transform3D(-0.973254, -0.00226268, -0.229704, -2.3283e-10, 0.999951, -0.00984987, 0.229715, -0.00958649, -0.973207, 9.8351, 0.0942498, -11.7567)
 progress = 3.69751
 
 [node name="Visiteur" parent="CheminVisiteurs/SuiviChemin" instance=ExtResource("2_544it")]
