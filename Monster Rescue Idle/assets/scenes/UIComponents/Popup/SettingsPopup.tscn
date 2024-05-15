@@ -1,10 +1,19 @@
 [gd_scene load_steps=13 format=3 uid="uid://cbyakdbvjqyxv"]
 
 [ext_resource type="Texture2D" uid="uid://bqal21yy8jd2k" path="res://assets/textures/x.png" id="1_me1mp"]
-[ext_resource type="Script" path="res://assets/scripts/UIComponents/Popup/SettingsPopup.gd" id="1_r22fb"]
 [ext_resource type="StyleBox" uid="uid://cwdipwhjp0uyr" path="res://assets/textures/transparent_style_box_flat.tres" id="2_igmn8"]
 [ext_resource type="StyleBox" uid="uid://cdgsumbq47pif" path="res://assets/textures/active_button_style_normal.tres" id="3_nmln0"]
 [ext_resource type="StyleBox" uid="uid://tkrx4vs5q41r" path="res://assets/textures/desactive_button_style_normal.tres" id="4_p2lcc"]
+
+[sub_resource type="GDScript" id="GDScript_odjrm"]
+script/source = "extends CanvasLayer
+
+func _on_close_settings_popup_pressed():
+	$Control/SettingsPopupAnimation.play_backwards(\"popUP\")
+
+func _on_setting_button_pressed():
+	$Control/SettingsPopupAnimation.play(\"popUP\")
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dna2s"]
 content_margin_left = 50.0
@@ -82,7 +91,7 @@ _data = {
 }
 
 [node name="SettingsPopup" type="CanvasLayer"]
-script = ExtResource("1_r22fb")
+script = SubResource("GDScript_odjrm")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -110,6 +119,7 @@ offset_right = 175.0
 offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(171, 62)
 size_flags_horizontal = 3
 size_flags_vertical = 6

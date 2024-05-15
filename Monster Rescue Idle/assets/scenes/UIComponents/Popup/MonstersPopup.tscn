@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bppf23giu6373"]
 
-[ext_resource type="Script" path="res://assets/scripts/UIComponents/Popup/SettingsPopup.gd" id="1_gak62"]
+[ext_resource type="Script" path="res://assets/scripts/UIComponents/Popup/MonstersPopupAnimation.gd" id="1_ko404"]
 [ext_resource type="Texture2D" uid="uid://bqal21yy8jd2k" path="res://assets/textures/x.png" id="2_itjj8"]
 [ext_resource type="StyleBox" uid="uid://cwdipwhjp0uyr" path="res://assets/textures/transparent_style_box_flat.tres" id="3_f2qu4"]
 
@@ -82,8 +82,8 @@ _data = {
 "popUP": SubResource("Animation_m6vt7")
 }
 
-[node name="SettingsPopup" type="CanvasLayer"]
-script = ExtResource("1_gak62")
+[node name="MonstersPopup" type="CanvasLayer"]
+script = ExtResource("1_ko404")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -111,6 +111,7 @@ offset_right = 175.0
 offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(171, 62)
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -146,7 +147,7 @@ layout_mode = 2
 texture = ExtResource("2_itjj8")
 expand_mode = 4
 
-[node name="CloseSettingsPopup" type="Button" parent="Control/PanelContainer/VBoxContainer/TopBar/MarginContainer"]
+[node name="CloseMonstersPopup" type="Button" parent="Control/PanelContainer/VBoxContainer/TopBar/MarginContainer"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_f2qu4")
 theme_override_styles/hover = ExtResource("3_f2qu4")
@@ -183,9 +184,9 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_73nbg")
 
-[node name="SettingsPopupAnimation" type="AnimationPlayer" parent="Control"]
+[node name="MonstersPopupAnimation" type="AnimationPlayer" parent="Control"]
 libraries = {
 "": SubResource("AnimationLibrary_8ky8k")
 }
 
-[connection signal="pressed" from="Control/PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseSettingsPopup" to="." method="_on_close_settings_popup_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseMonstersPopup" to="." method="_on_close_monsters_popup_pressed"]
