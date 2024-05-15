@@ -3,7 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://dxwslnpm4hc3m" path="res://assets/textures/cristaux.png" id="2_0qvj7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1yxg"]
-bg_color = Color(1, 1, 1, 1)
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.94902, 0.94902, 0.94902, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1

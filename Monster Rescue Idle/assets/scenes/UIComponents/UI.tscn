@@ -40,12 +40,27 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="SettingsPopup" parent="Control/GlobalMargin" instance=ExtResource("9_yuba1")]
+[node name="BackgroundPopup" type="Panel" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="MonstersPopup" parent="Control/GlobalMargin" instance=ExtResource("5_3wa4d")]
+[node name="SettingsPopup" parent="Control" instance=ExtResource("9_yuba1")]
+layout_mode = 1
 
-[connection signal="pressed" from="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings/SettingButton" to="Control/GlobalMargin/SettingsPopup" method="_on_setting_button_pressed"]
-[connection signal="pressed" from="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton/MonstersButton" to="Control/GlobalMargin/MonstersPopup" method="_on_monsters_button_pressed"]
+[node name="MonstersPopup" parent="Control" instance=ExtResource("5_3wa4d")]
+layout_mode = 1
+
+[connection signal="pressed" from="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings/SettingButton" to="Control/SettingsPopup" method="_on_setting_button_pressed"]
+[connection signal="pressed" from="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton/MonstersButton" to="." method="_on_monsters_button_pressed"]
+[connection signal="pressed" from="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton/MonstersButton" to="Control/MonstersPopup" method="_on_monsters_button_pressed"]
+[connection signal="pressed" from="Control/SettingsPopup/PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseSettingsPopup" to="." method="_on_close_settings_popup_pressed"]
+[connection signal="pressed" from="Control/MonstersPopup/PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseMonstersPopup" to="." method="_on_close_monsters_popup_pressed"]
 
 [editable path="Control/GlobalMargin/TopBar"]
 [editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/MonsterIndicator"]
@@ -55,5 +70,5 @@ size_flags_vertical = 8
 [editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/SuccessButton"]
 [editable path="Control/GlobalMargin/BottomBar"]
 [editable path="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton"]
-[editable path="Control/GlobalMargin/SettingsPopup"]
-[editable path="Control/GlobalMargin/MonstersPopup"]
+[editable path="Control/SettingsPopup"]
+[editable path="Control/MonstersPopup"]

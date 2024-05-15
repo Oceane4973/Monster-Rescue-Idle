@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bppf23giu6373"]
+[gd_scene load_steps=11 format=3 uid="uid://bppf23giu6373"]
 
 [ext_resource type="Script" path="res://assets/scripts/UIComponents/Popup/MonstersPopupAnimation.gd" id="1_ko404"]
 [ext_resource type="Texture2D" uid="uid://bqal21yy8jd2k" path="res://assets/textures/x.png" id="2_itjj8"]
 [ext_resource type="StyleBox" uid="uid://cwdipwhjp0uyr" path="res://assets/textures/transparent_style_box_flat.tres" id="3_f2qu4"]
+[ext_resource type="PackedScene" uid="uid://b4xa2c4wi5vwe" path="res://assets/scenes/UIComponents/Items/Monsters/MonsterItem.tscn" id="4_vlx5c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dna2s"]
-content_margin_left = 20.0
+content_margin_left = 10.0
 content_margin_top = 0.0
-content_margin_right = 20.0
+content_margin_right = 10.0
 content_margin_bottom = 0.0
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 1
@@ -20,6 +21,8 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sage5"]
 content_margin_left = 0.0
@@ -67,7 +70,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PanelContainer:scale")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,10 +85,7 @@ _data = {
 "popUP": SubResource("Animation_m6vt7")
 }
 
-[node name="MonstersPopup" type="CanvasLayer"]
-script = ExtResource("1_ko404")
-
-[node name="Control" type="Control" parent="."]
+[node name="MonstersPopup" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,21 +94,23 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
 size_flags_horizontal = 3
 size_flags_vertical = 6
+script = ExtResource("1_ko404")
 
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
-custom_minimum_size = Vector2(350, 0)
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -175.0
-offset_top = -170.0
-offset_right = 175.0
-offset_bottom = 170.0
+offset_left = -200.0
+offset_top = -119.5
+offset_right = 200.0
+offset_bottom = 119.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(171, 62)
@@ -116,15 +118,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 theme_override_styles/panel = SubResource("StyleBoxFlat_dna2s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="TopBar" type="PanelContainer" parent="Control/PanelContainer/VBoxContainer"]
+[node name="TopBar" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sage5")
 
-[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer/TopBar"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TopBar"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
@@ -132,7 +134,7 @@ text = "Monstres"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/VBoxContainer/TopBar"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/TopBar"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_left = 0
@@ -140,13 +142,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Icon" type="TextureRect" parent="Control/PanelContainer/VBoxContainer/TopBar/MarginContainer"]
+[node name="Icon" type="TextureRect" parent="PanelContainer/VBoxContainer/TopBar/MarginContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 texture = ExtResource("2_itjj8")
 expand_mode = 4
 
-[node name="CloseMonstersPopup" type="Button" parent="Control/PanelContainer/VBoxContainer/TopBar/MarginContainer"]
+[node name="CloseMonstersPopup" type="Button" parent="PanelContainer/VBoxContainer/TopBar/MarginContainer"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_f2qu4")
 theme_override_styles/hover = ExtResource("3_f2qu4")
@@ -154,15 +156,15 @@ theme_override_styles/pressed = ExtResource("3_f2qu4")
 theme_override_styles/disabled = ExtResource("3_f2qu4")
 theme_override_styles/focus = ExtResource("3_f2qu4")
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/PanelContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d65oq")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer/PanelContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="NbLabel" type="Label" parent="Control/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer2"]
+[node name="NbLabel" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.258824, 0.258824, 0.258824, 1)
 theme_override_font_sizes/font_size = 14
@@ -170,7 +172,7 @@ text = "Nombre de monstres"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NbMonsters" type="Label" parent="Control/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer2"]
+[node name="NbMonsters" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.258824, 0.258824, 0.258824, 1)
 theme_override_font_sizes/font_size = 14
@@ -178,14 +180,42 @@ text = "12/200"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="BottomBar" type="PanelContainer" parent="Control/PanelContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MonsterList" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MonsterItem3" parent="PanelContainer/VBoxContainer/ScrollContainer/MonsterList" instance=ExtResource("4_vlx5c")]
+layout_mode = 2
+
+[node name="MonsterItem4" parent="PanelContainer/VBoxContainer/ScrollContainer/MonsterList" instance=ExtResource("4_vlx5c")]
+layout_mode = 2
+
+[node name="MonsterItem5" parent="PanelContainer/VBoxContainer/ScrollContainer/MonsterList" instance=ExtResource("4_vlx5c")]
+layout_mode = 2
+
+[node name="MonsterItem2" parent="PanelContainer/VBoxContainer/ScrollContainer/MonsterList" instance=ExtResource("4_vlx5c")]
+layout_mode = 2
+
+[node name="MonsterItem6" parent="PanelContainer/VBoxContainer/ScrollContainer/MonsterList" instance=ExtResource("4_vlx5c")]
+layout_mode = 2
+
+[node name="MonsterItem" parent="PanelContainer/VBoxContainer/ScrollContainer/MonsterList" instance=ExtResource("4_vlx5c")]
+layout_mode = 2
+
+[node name="BottomBar" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_73nbg")
 
-[node name="MonstersPopupAnimation" type="AnimationPlayer" parent="Control"]
+[node name="MonstersPopupAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_8ky8k")
 }
 
-[connection signal="pressed" from="Control/PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseMonstersPopup" to="." method="_on_close_monsters_popup_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseMonstersPopup" to="." method="_on_close_monsters_popup_pressed"]

@@ -31,18 +31,19 @@ func _process(delta):
 	prestance += 1
 	money += 1
 
-#func _on_setting_button_pressed():
-#	$Control/GlobalMargin/SettingsPopup/PopupAnimation.play("popup")
+func _on_close_monsters_popup_pressed():
+	$Control/BackgroundPopup.set_visible(false)
 
-#func _on_close_settings_popup_pressed():
-#	$Control/GlobalMargin/SettingsPopup/PopupAnimation.play_backwards("popup")
+func _on_monsters_button_pressed():
+	$Control/BackgroundPopup.set_visible(true)
 
-#func _on_monsters_button_pressed():
-#	$Control/GlobalMargin/MonstersPopup/Control/PopupAnimation.play("popup")
-#
-#func _on_close_monsters_popup_pressed():
-#	$Control/GlobalMargin/MonstersPopup/Control/PopupAnimation.play_backwards("popup")
-	
+func _on_close_settings_popup_pressed():
+	$Control/BackgroundPopup.set_visible(false)
+
+func _on_setting_button_pressed():
+	$Control/BackgroundPopup.set_visible(true)
+
+
 func save():
 	var value = {
 		"filename" : get_scene_file_path(),
@@ -51,3 +52,4 @@ func save():
 		"prestance" : prestance
 	}
 	return value
+	
