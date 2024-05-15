@@ -20,24 +20,21 @@ func _process(delta):
 	get_input_keyboard(delta)
 
 func _handle_touch(event: InputEventScreenTouch):
-	if event.pressed:
-		touch_points[event.index] = event.position
-	else:
-		touch_points.erase(event.index)
-	if touch_points.size() == 2:
-		var touch_point_positions = touch_points.values()
-		start_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
-		start_dist = 0
-	return
+	print("Vérif");
+	#if event.pressed:
+	#	touch_points[event.index] = event.position
+	#else:
+	#	touch_points.erase(event.index)
 
 func _handle_drag(event: InputEventScreenDrag):
-	touch_points[event.index] = event.position
-	# Handle 2 touch points
-	if touch_points.size() == 2:
-		var touch_point_positions = touch_points.values()
-		var current_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
-		var zoom_factor = start_dist / current_dist
-		zoom = zoom / zoom_factor
+	print("Vérif3");
+	#touch_points[event.index] = event.position
+	## Handle 2 touch points
+	#if touch_points.size() == 2:
+	#	var touch_point_positions = touch_points.values()
+	#	var current_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
+	#	var zoom_factor = start_dist / current_dist
+	#	zoom = zoom / zoom_factor
 
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -46,10 +43,6 @@ func _input(event):
 		_handle_drag(event)
 
 func _unhandled_input(event):
-	if event is InputEventScreenTouch:
-		_handle_touch(event)
-	elif event is InputEventScreenDrag:
-		_handle_drag(event)
 	if event.is_action_pressed("cam_zoom_in"):
 		zoom -= zoom_speed
 	if event.is_action_pressed("cam_zoom_out"):
