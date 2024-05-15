@@ -3,9 +3,11 @@ extends Area3D
 #Référence : https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
 const SAVE_GAME_PATH := "user://savegame.save"
 const move_speed := 4.0
+var player_data = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player_data = get_node("/root/PlayerData")
 	loadGame();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,6 +44,8 @@ func saveGame() -> void:
 
 		# Store the save dictionary as a new line in the save file.
 		save_game.store_line(json_string)
+	var player_data_json_string = JSON.stringify(player_data.save());
+	save_game.store_line(player_data_json_string)
 	print("Saving succeeded")
 
 func loadGame() -> void:
@@ -50,15 +54,13 @@ func loadGame() -> void:
 		return
 	else:
 		# We need to revert the game state so we're not cloning objects
-		# during loading. This will vary wildly depending on the needs of a
-		# project, so take care with this step.
+		# during loading. This will vary wildly depending on the needs of a project, so take care with this step.
 		# For our example, we will accomplish this by deleting saveable objects.
 		var save_nodes = get_tree().get_nodes_in_group("Persist")
 		for i in save_nodes:
 			i.queue_free()
 
-		# Load the file line by line and process that dictionary to restore
-		# the object it represents.
+		# Load the file line by line and process that dictionary to restore the object it represents.
 		var save_game = FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
 		while save_game.get_position() < save_game.get_length():
 			var json_string = save_game.get_line()
@@ -74,7 +76,13 @@ func loadGame() -> void:
 
 			# Get the data from the JSON object
 			var node_data = json.get_data()
-
+			
+			# Verify if it's a global class
+			if(!node_data.has("filename")):
+				for i in node_data.keys():
+					player_data.set(i, node_data[i])
+				continue
+			
 			# Firstly, we need to create the object and add it to the tree and set its position.
 			var new_object = load(node_data["filename"]).instantiate()
 			get_node(node_data["parent"]).add_child(new_object)
