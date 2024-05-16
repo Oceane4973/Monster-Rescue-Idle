@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bppf23giu6373"]
+[gd_scene load_steps=10 format=3 uid="uid://bppf23giu6373"]
 
 [ext_resource type="Script" path="res://assets/scripts/UIComponents/Popup/MonstersPopupAnimation.gd" id="1_ko404"]
 [ext_resource type="Texture2D" uid="uid://bqal21yy8jd2k" path="res://assets/textures/x.png" id="2_itjj8"]
 [ext_resource type="StyleBox" uid="uid://cwdipwhjp0uyr" path="res://assets/textures/transparent_style_box_flat.tres" id="3_f2qu4"]
-[ext_resource type="PackedScene" uid="uid://b4xa2c4wi5vwe" path="res://assets/scenes/UIComponents/Items/Monsters/MonsterItem.tscn" id="4_vlx5c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dna2s"]
 content_margin_left = 10.0
@@ -188,36 +187,6 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="MonsterItem3" parent="PanelContainer/VBoxContainer/ScrollContainer/MonsterList" instance=ExtResource("4_vlx5c")]
-layout_mode = 2
-monster_name = "Petit Slime"
-description = "test"
-
-[node name="MonsterItem4" parent="PanelContainer/VBoxContainer/ScrollContainer/MonsterList" instance=ExtResource("4_vlx5c")]
-layout_mode = 2
-monster_name = "Visitor"
-description = "Petit visiteur fragile"
-price = 15
-benefice = 300
-img_src = "res://assets/textures/Visitor.png"
-
-[node name="MonsterItem5" parent="PanelContainer/VBoxContainer/ScrollContainer/MonsterList" instance=ExtResource("4_vlx5c")]
-layout_mode = 2
-price = 30
-benefice = 500
-img_src = "res://assets/textures/favoris.png"
-currentNB = 10
-maxNB = 20
-
-[node name="MonsterItem2" parent="PanelContainer/VBoxContainer/ScrollContainer/MonsterList" instance=ExtResource("4_vlx5c")]
-layout_mode = 2
-
-[node name="MonsterItem6" parent="PanelContainer/VBoxContainer/ScrollContainer/MonsterList" instance=ExtResource("4_vlx5c")]
-layout_mode = 2
-
-[node name="MonsterItem" parent="PanelContainer/VBoxContainer/ScrollContainer/MonsterList" instance=ExtResource("4_vlx5c")]
-layout_mode = 2
 
 [node name="BottomBar" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
