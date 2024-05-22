@@ -40,7 +40,7 @@ func _handle_drag(event: InputEventScreenDrag):
 		# Référence : https://www.youtube.com/watch?v=5Kjw8_JNPv8
 		var x_rotation = event.relative.y * 0.05
 		var y_rotation = event.relative.x * 0.05
-		rotateCamera(y_rotation, x_rotation, current_delta)
+		rotateCamera(-y_rotation, -x_rotation, current_delta)
 	# Handle 2 touch points
 	#if touch_points.size() == 2:
 	#	var touch_point_positions = touch_points.values()
