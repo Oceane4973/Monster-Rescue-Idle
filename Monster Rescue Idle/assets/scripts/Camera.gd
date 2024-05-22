@@ -20,7 +20,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#get_input_keyboard(delta)
+	get_input_keyboard()
 	current_delta = delta;
 
 func _handle_touch(event: InputEventScreenTouch):
@@ -40,7 +40,7 @@ func _handle_drag(event: InputEventScreenDrag):
 		# Référence : https://www.youtube.com/watch?v=5Kjw8_JNPv8
 		var x_rotation = event.relative.y * 0.05
 		var y_rotation = event.relative.x * 0.05
-		rotateCamera(-y_rotation, -x_rotation, current_delta)
+		rotateCamera(-y_rotation, -x_rotation)
 	# Handle 2 touch points
 	#if touch_points.size() == 2:
 	#	var touch_point_positions = touch_points.values()
@@ -62,7 +62,7 @@ func _unhandled_input(event):
 	zoom = clamp(zoom, min_zoom, max_zoom)
 	scale = Vector3.ONE * zoom
 
-func get_input_keyboard(delta):
+func get_input_keyboard():
 	var y_rotation = 0
 	if Input.is_action_pressed("cam_right"):
 		y_rotation += 1
@@ -73,12 +73,13 @@ func get_input_keyboard(delta):
 		x_rotation += 1
 	if Input.is_action_pressed("cam_down"):
 		x_rotation -= 1
-	print("Vérif")
-	rotateCamera(y_rotation, x_rotation, delta)
+	if(y_rotation != 0 || x_rotation != 0):
+		rotateCamera(y_rotation, x_rotation)
 
-func rotateCamera(y_rotation, x_rotation, factor_value: float):
-	rotate_y(y_rotation * rotation_speed * factor_value)
-	$Centre.rotate_x(x_rotation * rotation_speed * factor_value)
+func rotateCamera(y_rotation, x_rotation):
+	print("y_rotation : ", y_rotation, " | x_rotation : ", x_rotation)
+	rotate_y(y_rotation * rotation_speed * current_delta)
+	$Centre.rotate_x(x_rotation * rotation_speed * current_delta)
 	if($Centre.rotation.x < min_x_rotation):
 		$Centre.rotation.x = min_x_rotation
 	if($Centre.rotation.x > max_x_rotation):
