@@ -8,6 +8,10 @@ extends Node3D
 @export var zoom_speed = 0.1
 @export var max_x_rotation = 0.3
 @export var min_x_rotation = -1
+@export var min_y_translation = -8
+@export var max_y_translation = 16
+@export var min_x_translation = -48
+@export var max_x_translation = 48
 var start_dist: float
 var touch_points: Dictionary = {}
 var current_delta = 0;
@@ -66,18 +70,18 @@ func _unhandled_input(event):
 	scale = Vector3.ONE * zoom
 
 func get_input_keyboard():
-	var y_rotation = 0
+	var x_translation = 0
 	if Input.is_action_pressed("cam_right"):
-		y_rotation += 1
+		x_translation += 1
 	if Input.is_action_pressed("cam_left"):
-		y_rotation -= 1
-	var x_rotation = 0
+		x_translation -= 1
+	var y_translation = 0
 	if Input.is_action_pressed("cam_up"):
-		x_rotation += 1
+		y_translation += 1
 	if Input.is_action_pressed("cam_down"):
-		x_rotation -= 1
-	if(y_rotation != 0 || x_rotation != 0):
-		rotateCamera(y_rotation, x_rotation)
+		y_translation -= 1
+	if(x_translation != 0 || y_translation != 0):
+		translateCamera(x_translation, y_translation)
 
 func rotateCamera(y_rotation, x_rotation):
 	print("y_rotation : ", y_rotation, " | x_rotation : ", x_rotation)
@@ -88,4 +92,14 @@ func rotateCamera(y_rotation, x_rotation):
 	if($Centre.rotation.x > max_x_rotation):
 		$Centre.rotation.x = max_x_rotation
 
-
+func translateCamera(x_translation, y_translation):
+	translate(Vector3(x_translation, y_translation, 0.0));
+	if(transform.origin.y < min_y_translation):
+		transform.origin.y = min_y_translation;
+	if(transform.origin.y > max_y_translation):
+		transform.origin.y = max_y_translation;
+	if(transform.origin.x < min_x_translation):
+		transform.origin.x = min_x_translation;
+	if(transform.origin.x > max_x_translation):
+		transform.origin.x = max_x_translation;
+	print("Newposition of camera : ", transform.origin)
