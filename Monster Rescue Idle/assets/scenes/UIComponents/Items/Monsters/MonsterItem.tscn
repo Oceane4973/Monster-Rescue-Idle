@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dxwslnpm4hc3m" path="res://assets/textures/cristaux.png" id="1_be48h"]
 [ext_resource type="Script" path="res://assets/scripts/UIComponents/Items/Monsters/MonsterItem.gd" id="1_oj11x"]
+[ext_resource type="PackedScene" uid="uid://drr2nh6igo752" path="res://assets/scenes/UIComponents/Buttons/BuyButton.tscn" id="3_joie6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnrwc"]
 content_margin_left = 5.0
@@ -32,30 +33,13 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1yxg"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.94902, 0.94902, 0.94902, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
 [node name="MonsterItem" type="PanelContainer" node_paths=PackedStringArray("name_node", "description_node", "benefice_node", "price_node", "ratio_nb_node", "img")]
 theme_override_styles/panel = SubResource("StyleBoxFlat_nnrwc")
 script = ExtResource("1_oj11x")
 name_node = NodePath("HBoxContainer/Description/Name")
 description_node = NodePath("HBoxContainer/Description/DescriptionLabel")
 benefice_node = NodePath("HBoxContainer/Description/HBoxContainer/Benefice/Benefice")
-price_node = NodePath("HBoxContainer/BuyButton/Price/Price")
+price_node = NodePath("HBoxContainer/BuyButton/MarginContainer/PossibleSell/MoneyPerSec/Label")
 ratio_nb_node = NodePath("HBoxContainer/Description/HBoxContainer/NbMax/NbRatio")
 img = NodePath("HBoxContainer/MonsterPreview/MonsterPreview")
 
@@ -123,24 +107,7 @@ theme_override_font_sizes/font_size = 14
 text = "10/100
 "
 
-[node name="BuyButton" type="PanelContainer" parent="HBoxContainer"]
+[node name="BuyButton" parent="HBoxContainer" instance=ExtResource("3_joie6")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_h1yxg")
 
-[node name="Price" type="HBoxContainer" parent="HBoxContainer/BuyButton"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="IconPrice" type="TextureRect" parent="HBoxContainer/BuyButton/Price"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-texture = ExtResource("1_be48h")
-expand_mode = 2
-
-[node name="Price" type="Label" parent="HBoxContainer/BuyButton/Price"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 18
-text = "9811"
+[editable path="HBoxContainer/BuyButton"]

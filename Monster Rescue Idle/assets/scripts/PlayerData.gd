@@ -3,7 +3,7 @@ extends Node
 @export var money: int = 0
 @export var prestance: int = 0;
 var list_Of_Monsters = [
-	Monster.new("slime", "A slimy creature", 50, "res://assets/textures/avatar.png", 5, 2, 10),
+	Monster.new("slime", "A slimy creature", 500, "res://assets/textures/avatar.png", 5, 2, 10),
 	Monster.new("slime", "A slimy creature", 10, "res://assets/textures/avatar.png", 5, 2, 10)
 ] :
 	set (value):
@@ -15,7 +15,6 @@ func _ready():
 	prestance = 0;
 
 func _process(delta):
-	pass
 	money += 1
 	prestance += 1
 

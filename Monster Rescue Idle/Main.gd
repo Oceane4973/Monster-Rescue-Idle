@@ -52,7 +52,6 @@ func saveGame() -> void:
 func loadGame() -> void:
 	if save_file_exists() == false:
 		print("Save file doesn't exist : we're creating it")
-		return
 	else:
 		# We need to revert the game state so we're not cloning objects
 		# during loading. This will vary wildly depending on the needs of a project, so take care with this step.

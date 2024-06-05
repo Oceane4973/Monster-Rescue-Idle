@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://drr2nh6igo752"]
+[gd_scene load_steps=4 format=3 uid="uid://drr2nh6igo752"]
 
 [ext_resource type="Texture2D" uid="uid://dxwslnpm4hc3m" path="res://assets/textures/cristaux.png" id="2_0qvj7"]
+[ext_resource type="Texture2D" uid="uid://cl43dvjqlaidx" path="res://assets/textures/cadenas.png" id="2_xja70"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1yxg"]
 content_margin_left = 0.0
@@ -31,28 +32,49 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 18
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="LockedSell" type="VBoxContainer" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="MoneyPerSec" type="HBoxContainer" parent="MarginContainer/LockedSell"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/LockedSell/MoneyPerSec"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("2_xja70")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/LockedSell/MoneyPerSec"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Bloqué"
+
+[node name="PossibleSell" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PossibleSell"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "Niveau sup."
 horizontal_alignment = 1
 
-[node name="MoneyPerSec" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MoneyPerSec" type="HBoxContainer" parent="MarginContainer/PossibleSell"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/MoneyPerSec"]
+[node name="Icon" type="TextureRect" parent="MarginContainer/PossibleSell/MoneyPerSec"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 texture = ExtResource("2_0qvj7")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MoneyPerSec"]
+[node name="Label" type="Label" parent="MarginContainer/PossibleSell/MoneyPerSec"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 22

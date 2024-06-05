@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b52lu5uoev5mb"]
+[gd_scene load_steps=9 format=3 uid="uid://b52lu5uoev5mb"]
 
+[ext_resource type="Script" path="res://assets/scripts/UIComponents/Bar/TopBar.gd" id="1_frrx5"]
 [ext_resource type="PackedScene" uid="uid://c6tdfqqfn4dv2" path="res://assets/scenes/UIComponents/Indicators/MonsterIndicator.tscn" id="1_un2h8"]
 [ext_resource type="PackedScene" uid="uid://y0tpk0qp1dxd" path="res://assets/scenes/UIComponents/Indicators/PrestanceIndicator.tscn" id="2_d8x6e"]
 [ext_resource type="PackedScene" uid="uid://80yjv46k1bbu" path="res://assets/scenes/UIComponents/Indicators/MoneyIndicator.tscn" id="3_g4faj"]
@@ -35,6 +36,7 @@ layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+script = ExtResource("1_frrx5")
 
 [node name="TopBar" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -47,6 +49,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_bups4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TopBar"]
 layout_mode = 2
+theme_override_constants/separation = 13
 
 [node name="Bar" type="MarginContainer" parent="TopBar/VBoxContainer"]
 layout_mode = 2
