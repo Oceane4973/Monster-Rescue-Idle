@@ -2,14 +2,13 @@ extends Control
 
 @onready var monster_list = get_node("PanelContainer/VBoxContainer/ScrollContainer/MonsterList")
 var MonsterItemScene = preload("res://assets/scenes/UIComponents/Items/Monsters/MonsterItem.tscn")
-
-var list_Of_Monsters = [
-	Monster.new(),
-	Monster.new()
-]
+var player_data = null
 
 func _ready():
-	for monster in list_Of_Monsters :
+	player_data = get_node("/root/PlayerData")
+	
+func instantiate_view():
+	for monster in player_data.list_Of_Monsters :
 		var instance = MonsterItemScene.instantiate()
 		instance.load_monster_class(monster)
 		monster_list.add_child(instance)

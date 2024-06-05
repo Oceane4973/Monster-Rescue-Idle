@@ -324,3 +324,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.681025, 1.17575, 0)
 mesh = SubResource("BoxMesh_y8xqu")
 
 [node name="UI" parent="." instance=ExtResource("4_r4evu")]
+
+[node name="Control" parent="UI" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[editable path="UI"]
+[editable path="UI/Control/GlobalMargin/TopBar"]
+[editable path="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/MonsterIndicator"]
+[editable path="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/PrestanceIndicator"]
+[editable path="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator"]
+[editable path="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings"]
+[editable path="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/SuccessButton"]
+[editable path="UI/Control/GlobalMargin/BottomBar"]
+[editable path="UI/Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton"]
+[editable path="UI/Control/SettingsPopup"]
+[editable path="UI/Control/MonstersPopup"]

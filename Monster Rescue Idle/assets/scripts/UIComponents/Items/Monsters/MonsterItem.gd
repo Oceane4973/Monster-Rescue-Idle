@@ -7,7 +7,7 @@ extends PanelContainer
 @export var ratio_nb_node: Node
 @export var img: Node
 
-# Called when the node enters the scene tree for the first time.
+# Called"res://assets/scenes/UIComponents/Popup/MonstersPopup.tscn" when the node enters the scene tree for the first time.
 func _ready():
 	pass
 	
