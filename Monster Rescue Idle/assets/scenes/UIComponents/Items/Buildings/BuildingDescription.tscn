@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cm5f0rd5dpdqk"]
+
+[node name="Description" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = -1
+
+[node name="Benefice" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "+200
+"
+
+[node name="DescriptionLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Augmentation de l'infrastructure XXXXXXXXX 
+"
+autowrap_mode = 2

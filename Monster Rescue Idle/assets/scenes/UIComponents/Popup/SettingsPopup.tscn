@@ -1,19 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://cbyakdbvjqyxv"]
 
+[ext_resource type="Script" path="res://assets/scripts/UIComponents/Popup/SettingsPopupAnimation.gd" id="1_fh6xp"]
 [ext_resource type="Texture2D" uid="uid://bqal21yy8jd2k" path="res://assets/textures/x.png" id="1_me1mp"]
 [ext_resource type="StyleBox" uid="uid://cwdipwhjp0uyr" path="res://assets/textures/transparent_style_box_flat.tres" id="2_igmn8"]
 [ext_resource type="StyleBox" uid="uid://cdgsumbq47pif" path="res://assets/textures/active_button_style_normal.tres" id="3_nmln0"]
 [ext_resource type="StyleBox" uid="uid://tkrx4vs5q41r" path="res://assets/textures/desactive_button_style_normal.tres" id="4_p2lcc"]
-
-[sub_resource type="GDScript" id="GDScript_odjrm"]
-script/source = "extends CanvasLayer
-
-func _on_close_settings_popup_pressed():
-	$Control/SettingsPopupAnimation.play_backwards(\"popUP\")
-
-func _on_setting_button_pressed():
-	$Control/SettingsPopupAnimation.play(\"popUP\")
-"
+[ext_resource type="Animation" uid="uid://c068wra44s1w8" path="res://assets/scripts/UIComponents/Popup/popUP.res" id="6_erv84"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dna2s"]
 content_margin_left = 50.0
@@ -69,31 +61,12 @@ corner_radius_bottom_left = 30
 expand_margin_left = 50.0
 expand_margin_right = 50.0
 
-[sub_resource type="Animation" id="Animation_m6vt7"]
-resource_name = "popUP"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PanelContainer:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8ky8k"]
 _data = {
-"popUP": SubResource("Animation_m6vt7")
+"popUP": ExtResource("6_erv84")
 }
 
-[node name="SettingsPopup" type="CanvasLayer"]
-script = SubResource("GDScript_odjrm")
-
-[node name="Control" type="Control" parent="."]
+[node name="SettingsPopup" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -104,8 +77,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
+script = ExtResource("1_fh6xp")
 
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -125,15 +99,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 theme_override_styles/panel = SubResource("StyleBoxFlat_dna2s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="TopBar" type="PanelContainer" parent="Control/PanelContainer/VBoxContainer"]
+[node name="TopBar" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sage5")
 
-[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer/TopBar"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TopBar"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
@@ -141,7 +115,7 @@ text = "Paramètres"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/VBoxContainer/TopBar"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/TopBar"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_left = 0
@@ -149,13 +123,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Icon" type="TextureRect" parent="Control/PanelContainer/VBoxContainer/TopBar/MarginContainer"]
+[node name="Icon" type="TextureRect" parent="PanelContainer/VBoxContainer/TopBar/MarginContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 texture = ExtResource("1_me1mp")
 expand_mode = 4
 
-[node name="CloseSettingsPopup" type="Button" parent="Control/PanelContainer/VBoxContainer/TopBar/MarginContainer"]
+[node name="CloseSettingsPopup" type="Button" parent="PanelContainer/VBoxContainer/TopBar/MarginContainer"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_igmn8")
 theme_override_styles/hover = ExtResource("2_igmn8")
@@ -163,38 +137,38 @@ theme_override_styles/pressed = ExtResource("2_igmn8")
 theme_override_styles/disabled = ExtResource("2_igmn8")
 theme_override_styles/focus = ExtResource("2_igmn8")
 
-[node name="LanguageLabel" type="MarginContainer" parent="Control/PanelContainer/VBoxContainer"]
+[node name="LanguageLabel" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/VBoxContainer/LanguageLabel"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/LanguageLabel"]
 layout_mode = 2
 
-[node name="Line" type="PanelContainer" parent="Control/PanelContainer/VBoxContainer/LanguageLabel/MarginContainer"]
+[node name="Line" type="PanelContainer" parent="PanelContainer/VBoxContainer/LanguageLabel/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxLine_4dec1")
 
-[node name="Language" type="PanelContainer" parent="Control/PanelContainer/VBoxContainer/LanguageLabel/MarginContainer"]
+[node name="Language" type="PanelContainer" parent="PanelContainer/VBoxContainer/LanguageLabel/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_jbdf2")
 
-[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer/LanguageLabel/MarginContainer/Language"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/LanguageLabel/MarginContainer/Language"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "Langue"
 horizontal_alignment = 1
 
-[node name="LanguageButtons" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
+[node name="LanguageButtons" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="French" type="Button" parent="Control/PanelContainer/VBoxContainer/LanguageButtons"]
+[node name="French" type="Button" parent="PanelContainer/VBoxContainer/LanguageButtons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -207,7 +181,7 @@ theme_override_styles/disabled = ExtResource("3_nmln0")
 theme_override_styles/focus = ExtResource("3_nmln0")
 text = "Français"
 
-[node name="English" type="Button" parent="Control/PanelContainer/VBoxContainer/LanguageButtons"]
+[node name="English" type="Button" parent="PanelContainer/VBoxContainer/LanguageButtons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -221,69 +195,69 @@ theme_override_styles/focus = ExtResource("4_p2lcc")
 text = "Anglais
 "
 
-[node name="GameLabel" type="MarginContainer" parent="Control/PanelContainer/VBoxContainer"]
+[node name="GameLabel" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/VBoxContainer/GameLabel"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/GameLabel"]
 layout_mode = 2
 
-[node name="Line" type="PanelContainer" parent="Control/PanelContainer/VBoxContainer/GameLabel/MarginContainer"]
+[node name="Line" type="PanelContainer" parent="PanelContainer/VBoxContainer/GameLabel/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxLine_4dec1")
 
-[node name="Game" type="PanelContainer" parent="Control/PanelContainer/VBoxContainer/GameLabel/MarginContainer"]
+[node name="Game" type="PanelContainer" parent="PanelContainer/VBoxContainer/GameLabel/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_jbdf2")
 
-[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer/GameLabel/MarginContainer/Game"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/GameLabel/MarginContainer/Game"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "Jeu"
 horizontal_alignment = 1
 
-[node name="AnimationsButton" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
+[node name="AnimationsButton" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="Control/PanelContainer/VBoxContainer/AnimationsButton"]
+[node name="CheckButton" type="CheckButton" parent="PanelContainer/VBoxContainer/AnimationsButton"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer/AnimationsButton"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/AnimationsButton"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 14
 text = "Activer les animations"
 
-[node name="SoundVolume" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
+[node name="SoundVolume" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer/SoundVolume"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/SoundVolume"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 14
 text = "Volume sonore"
 
-[node name="HSlider" type="HSlider" parent="Control/PanelContainer/VBoxContainer/SoundVolume"]
+[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer/SoundVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/center_grabber = 0
 value = 50.0
 
-[node name="BottomBar" type="PanelContainer" parent="Control/PanelContainer/VBoxContainer"]
+[node name="BottomBar" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_73nbg")
 
-[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer/BottomBar"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/BottomBar"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.180392, 0.180392, 0.180392, 1)
 theme_override_font_sizes/font_size = 14
@@ -292,7 +266,7 @@ text = "Version 1.0.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/VBoxContainer/BottomBar"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/BottomBar"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_left = 0
@@ -300,7 +274,7 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer/BottomBar/MarginContainer"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/BottomBar/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.180392, 0.180392, 0.180392, 1)
 theme_override_font_sizes/font_size = 14
@@ -309,9 +283,9 @@ text = "Crédits
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsPopupAnimation" type="AnimationPlayer" parent="Control"]
+[node name="SettingsPopupAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_8ky8k")
 }
 
-[connection signal="pressed" from="Control/PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseSettingsPopup" to="." method="_on_close_settings_popup_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseSettingsPopup" to="." method="_on_close_settings_popup_pressed"]

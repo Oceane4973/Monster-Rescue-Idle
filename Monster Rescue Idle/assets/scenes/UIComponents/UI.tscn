@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwqgbh2u4ior2"]
+[gd_scene load_steps=6 format=3 uid="uid://dwqgbh2u4ior2"]
 
 [ext_resource type="Script" path="res://assets/scripts/UIComponents/UI.gd" id="1_ikc85"]
 [ext_resource type="PackedScene" uid="uid://b52lu5uoev5mb" path="res://assets/scenes/UIComponents/Bar/TopBar.tscn" id="2_ap5qj"]
 [ext_resource type="PackedScene" uid="uid://d0vrqcmee4pdd" path="res://assets/scenes/UIComponents/Bar/BottomBar.tscn" id="3_pr20q"]
-[ext_resource type="StyleBox" uid="uid://cwdipwhjp0uyr" path="res://assets/textures/transparent_style_box_flat.tres" id="3_vc7pi"]
 [ext_resource type="PackedScene" uid="uid://bppf23giu6373" path="res://assets/scenes/UIComponents/Popup/MonstersPopup.tscn" id="5_3wa4d"]
 [ext_resource type="PackedScene" uid="uid://cbyakdbvjqyxv" path="res://assets/scenes/UIComponents/Popup/SettingsPopup.tscn" id="9_yuba1"]
 
@@ -34,38 +33,42 @@ theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
 [node name="TopBar" parent="Control/GlobalMargin" instance=ExtResource("2_ap5qj")]
+layout_mode = 2
+size_flags_vertical = 0
 
 [node name="BottomBar" parent="Control/GlobalMargin" instance=ExtResource("3_pr20q")]
-
-[node name="MonstersButton" type="Button" parent="Control/GlobalMargin/BottomBar/Control/BottomBar/MarginContainer2/HBoxContainer/MonstersButton" index="1"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
-theme_override_styles/normal = ExtResource("3_vc7pi")
-theme_override_styles/hover = ExtResource("3_vc7pi")
-theme_override_styles/pressed = ExtResource("3_vc7pi")
-theme_override_styles/disabled = ExtResource("3_vc7pi")
-theme_override_styles/focus = ExtResource("3_vc7pi")
+size_flags_vertical = 8
 
-[node name="SettingsPopup" parent="Control/GlobalMargin" instance=ExtResource("9_yuba1")]
+[node name="BackgroundPopup" type="Panel" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="MonstersPopup" parent="Control/GlobalMargin" instance=ExtResource("5_3wa4d")]
+[node name="SettingsPopup" parent="Control" instance=ExtResource("9_yuba1")]
+layout_mode = 1
 
-[connection signal="pressed" from="Control/GlobalMargin/TopBar/Control/TopBar/VBoxContainer/Bar/Informations/Settings/SettingButton" to="Control/GlobalMargin/SettingsPopup" method="_on_setting_button_pressed"]
-[connection signal="pressed" from="Control/GlobalMargin/BottomBar/Control/BottomBar/MarginContainer2/HBoxContainer/MonstersButton/MonstersButton" to="Control/GlobalMargin/MonstersPopup" method="_on_monsters_button_pressed"]
+[node name="MonstersPopup" parent="Control" instance=ExtResource("5_3wa4d")]
+layout_mode = 1
+
+[connection signal="pressed" from="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings/SettingButton" to="Control/SettingsPopup" method="_on_setting_button_pressed"]
+[connection signal="pressed" from="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton/MonstersButton" to="." method="_on_monsters_button_pressed"]
+[connection signal="pressed" from="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton/MonstersButton" to="Control/MonstersPopup" method="_on_monsters_button_pressed"]
+[connection signal="pressed" from="Control/SettingsPopup/PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseSettingsPopup" to="." method="_on_close_settings_popup_pressed"]
+[connection signal="pressed" from="Control/MonstersPopup/PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseMonstersPopup" to="." method="_on_close_monsters_popup_pressed"]
 
 [editable path="Control/GlobalMargin/TopBar"]
+[editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/MonsterIndicator"]
+[editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/PrestanceIndicator"]
+[editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator"]
+[editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings"]
+[editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/SuccessButton"]
 [editable path="Control/GlobalMargin/BottomBar"]
-[editable path="Control/GlobalMargin/SettingsPopup"]
-[editable path="Control/GlobalMargin/MonstersPopup"]
+[editable path="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton"]
+[editable path="Control/SettingsPopup"]
+[editable path="Control/MonstersPopup"]
