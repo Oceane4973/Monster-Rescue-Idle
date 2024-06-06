@@ -17,11 +17,14 @@ var touch_points: Dictionary = {}
 var current_delta = 0;
 
 var zoom = 8.0
+
 var player_data = null
+var ui_data = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player_data = get_node("/root/PlayerData")
+	ui_data = get_node("/root/UiData");
 	#rotate_object_local(Vector3.UP, 0)
 	#$Centre.rotate_object_local(Vector3.RIGHT, 0)
 	scale = Vector3.ONE * zoom
@@ -46,17 +49,22 @@ func _handle_drag(event: InputEventScreenDrag):
 	touch_points[event.index] = event.position
 	player_data.points = touch_points;
 	if touch_points.size() == 1:
-		# Référence : https://www.youtube.com/watch?v=5Kjw8_JNPv8
-		var x_rotation = event.relative.y * 0.05
-		var y_rotation = event.relative.x * 0.05
-		rotateCamera(-y_rotation, -x_rotation)
+		if ui_data.rotating == true:
+			# Référence : https://www.youtube.com/watch?v=5Kjw8_JNPv8
+			var x_rotation = event.relative.y * 0.05
+			var y_rotation = event.relative.x * 0.05
+			rotateCamera(-y_rotation, -x_rotation)
+		else:
+			var x_translation = event.relative.x * 0.005
+			var y_translation = event.relative.y * 0.005
+			translateCamera(-x_translation, -y_translation);
 	# Handle 2 touch points
-	if touch_points.size() == 2:
-		var touch_point_positions = touch_points.values()
-		var current_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
-		var zoom_factor = start_dist / current_dist
-		zoom = zoom / zoom_factor
-		zoomCamera();
+	#if touch_points.size() == 2:
+	#	var touch_point_positions = touch_points.values()
+	#	var current_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
+	#	var zoom_factor = start_dist / current_dist
+	#	zoom = zoom / zoom_factor
+	#	zoomCamera();
 
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -86,7 +94,6 @@ func get_input_keyboard():
 		translateCamera(x_translation, y_translation)
 
 func rotateCamera(y_rotation, x_rotation):
-	print("y_rotation : ", y_rotation, " | x_rotation : ", x_rotation)
 	rotate_y(y_rotation * rotation_speed * current_delta)
 	$Centre.rotate_x(x_rotation * rotation_speed * current_delta)
 	if($Centre.rotation.x < min_x_rotation):
@@ -108,9 +115,12 @@ func translateCamera(x_translation, y_translation):
 		transform.origin.x = max_xz_translation;
 	if(transform.origin.z > max_xz_translation):
 		transform.origin.z = max_xz_translation;
-	print("Newposition of camera : ", transform.origin)
 
 func zoomCamera():
 	zoom = clamp(zoom, min_zoom, max_zoom)
 	player_data.zoom = zoom
 	scale = Vector3.ONE * zoom
+
+
+func _on_lock_rotation_button_pressed():
+	ui_data.rotating = !ui_data.rotating;

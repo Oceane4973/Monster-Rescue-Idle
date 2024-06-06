@@ -328,6 +328,10 @@ mesh = SubResource("BoxMesh_y8xqu")
 [node name="Control" parent="UI" index="0"]
 metadata/_edit_use_anchors_ = true
 
+[connection signal="pressed" from="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings/SettingButton" to="UI/Control/SettingsPopup" method="_on_setting_button_pressed"]
+[connection signal="pressed" from="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/LockRotationButton/LockRotationButton" to="Camera" method="_on_lock_rotation_button_pressed"]
+[connection signal="pressed" from="UI/Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton/MonstersButton" to="UI/Control/MonstersPopup" method="_on_monsters_button_pressed"]
+
 [editable path="UI"]
 [editable path="UI/Control/GlobalMargin/TopBar"]
 [editable path="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/MonsterIndicator"]
@@ -335,6 +339,7 @@ metadata/_edit_use_anchors_ = true
 [editable path="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator"]
 [editable path="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings"]
 [editable path="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/SuccessButton"]
+[editable path="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/LockRotationButton"]
 [editable path="UI/Control/GlobalMargin/BottomBar"]
 [editable path="UI/Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton"]
 [editable path="UI/Control/SettingsPopup"]

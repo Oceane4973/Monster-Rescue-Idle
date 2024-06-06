@@ -20,7 +20,6 @@ func _ready():
 func _process(delta):
 	money += 1
 	prestance += 1
-	print(points)
 
 func save():
 	var value = {
