@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://drr2nh6igo752"]
+[gd_scene load_steps=5 format=3 uid="uid://drr2nh6igo752"]
 
 [ext_resource type="Texture2D" uid="uid://dxwslnpm4hc3m" path="res://assets/textures/cristaux.png" id="2_0qvj7"]
 [ext_resource type="Texture2D" uid="uid://cl43dvjqlaidx" path="res://assets/textures/cadenas.png" id="2_xja70"]
+[ext_resource type="StyleBox" uid="uid://cwdipwhjp0uyr" path="res://assets/textures/transparent_style_box_flat.tres" id="3_rdpob"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1yxg"]
 content_margin_left = 0.0
@@ -79,3 +80,24 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 22
 text = "9811"
+
+[node name="BuyButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_styles/normal = ExtResource("3_rdpob")
+theme_override_styles/hover = ExtResource("3_rdpob")
+theme_override_styles/pressed = ExtResource("3_rdpob")
+theme_override_styles/disabled = ExtResource("3_rdpob")
+theme_override_styles/focus = ExtResource("3_rdpob")

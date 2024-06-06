@@ -9,13 +9,15 @@ var img_src : String
 var currentNB : int
 var benefice : int
 var maxNB : int
+var model_src : String
 
 # Constructeur
-func _init(name: String = "", description: String = "", price: int = 0, img_src: String = "", currentNB: int = 0, benefice: int = 0, maxNB: int = 0):
+func _init(name: String = "", description: String = "", price: int = 0, img_src: String = "", currentNB: int = 0, benefice: int = 0, maxNB: int = 0, model_src: String = ""):
 	self.name = name
 	self.description = description
 	self.price = price
 	self.img_src = img_src
+	self.model_src = model_src
 	self.currentNB = currentNB
 	self.benefice = benefice
 	self.maxNB = maxNB
@@ -29,12 +31,13 @@ func to_dict() -> Dictionary:
 		"img_src": img_src,
 		"currentNB": currentNB,
 		"benefice": benefice,
-		"maxNB": maxNB
+		"maxNB": maxNB,
+		"model_src" : model_src
 	}
 
 # Méthode pour créer un objet à partir d'un dictionnaire
 static func from_dict(dict: Dictionary) -> Monster:
-	return Monster.new(dict.get("name", ""), dict.get("description", ""), dict.get("price", 0), dict.get("img_src", ""), dict.get("currentNB", 0), dict.get("benefice", 0), dict.get("maxNB", 0))
+	return Monster.new(dict.get("name", ""), dict.get("description", ""), dict.get("price", 0), dict.get("img_src", ""), dict.get("currentNB", 0), dict.get("benefice", 0), dict.get("maxNB", 0), dict.get("model_src", ""))
 
 # Méthode pour convertir une liste de Monster en JSON
 static func list_to_json(monsters: Array) -> String:

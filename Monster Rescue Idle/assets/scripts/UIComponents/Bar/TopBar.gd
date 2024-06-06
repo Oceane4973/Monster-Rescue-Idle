@@ -1,6 +1,7 @@
 extends Control
 
 @onready var money_label = $TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer/VBoxContainer/TotalMoney/MoneyLabel
+@onready var money_per_sec = $TopBar/VBoxContainer/Bar/Informations/MoneyIndicator/MarginContainer/VBoxContainer/MoneyPerSec/MoneyPerSecLabel
 @onready var prestance_label = $TopBar/VBoxContainer/Bar/Informations/PrestanceIndicator/MarginContainer/HBoxContainer/PrestanceLabel
 @onready var nb_monster_label = $TopBar/VBoxContainer/Bar/Informations/MonsterIndicator/MarginContainer/HBoxContainer/MonsterCountLabel
 
@@ -19,6 +20,7 @@ func _ready():
 
 func _update_money_label():
 	money_label.text = str(player_data.money)
+	money_per_sec.text = str(player_data.money_per_sec) + "/sec"
 
 func _update_nb_monster_label():
 	nb_monster_label.text = str(player_data.get_total_number_of_monsters())
@@ -38,3 +40,4 @@ func _process(delta):
 	_update_money_label();
 	_update_prestance_label();
 	_update_rotate_icon();
+	_update_nb_monster_label()
