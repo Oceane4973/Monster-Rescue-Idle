@@ -329,10 +329,7 @@ mesh = SubResource("BoxMesh_y8xqu")
 [node name="Control" parent="UI" index="0"]
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings/SettingButton" to="UI/Control/SettingsPopup" method="_on_setting_button_pressed"]
 [connection signal="pressed" from="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/LockRotationButton/LockRotationButton" to="Camera" method="_on_lock_rotation_button_pressed"]
-[connection signal="pressed" from="UI/Control/GlobalMargin/BottomBar/BottomBar/TopButton/MoreButton/BuildingsButton" to="UI/Control/BuildingPopup" method="_on_buildings_button_pressed"]
-[connection signal="pressed" from="UI/Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton/MonstersButton" to="UI/Control/MonstersPopup" method="_on_monsters_button_pressed"]
 
 [editable path="UI"]
 [editable path="UI/Control/GlobalMargin/TopBar"]

@@ -6,8 +6,8 @@ extends Node
 var time_accumulator : float = 0.0  # Accumulateur de temps
 
 var list_Of_Building = [
-	Building.new("Clinique", "Parfait pour soigner vos monstres", 500, "res://assets/textures/avatar.png", 1, 10),
-	Building.new("Accueil", "Ce lieu permettra de faire afflué les visiteurs", 10, "res://assets/textures/avatar.png", 0, 10)
+	Building.new("Clinique", "Parfait pour soigner vos monstres", 500, "res://assets/textures/avatar.png", "res://assets/3d_models/house.glb", 1, 10, -14.644, 3.087, -15.457, 0.75),
+	Building.new("Accueil", "Ce lieu permettra de faire afflué les visiteurs", 10, "res://assets/textures/avatar.png", "res://assets/3d_models/house.glb", 0, 10, -14.644, 3.087, -15.457, 0.75)
 ] :
 	set (value):
 		var buildings = Building.list_from_json(value)
