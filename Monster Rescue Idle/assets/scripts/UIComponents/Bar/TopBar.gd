@@ -38,4 +38,3 @@ func _process(delta):
 	_update_money_label();
 	_update_prestance_label();
 	_update_rotate_icon();
-
