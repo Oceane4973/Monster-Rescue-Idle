@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwqgbh2u4ior2"]
+[gd_scene load_steps=7 format=3 uid="uid://dwqgbh2u4ior2"]
 
 [ext_resource type="Script" path="res://assets/scripts/UIComponents/UI.gd" id="1_ikc85"]
 [ext_resource type="PackedScene" uid="uid://b52lu5uoev5mb" path="res://assets/scenes/UIComponents/Bar/TopBar.tscn" id="2_ap5qj"]
 [ext_resource type="PackedScene" uid="uid://d0vrqcmee4pdd" path="res://assets/scenes/UIComponents/Bar/BottomBar.tscn" id="3_pr20q"]
 [ext_resource type="PackedScene" uid="uid://bppf23giu6373" path="res://assets/scenes/UIComponents/Popup/MonstersPopup.tscn" id="5_3wa4d"]
+[ext_resource type="PackedScene" uid="uid://1l6r6catb1ov" path="res://assets/scenes/UIComponents/Popup/BuildingsPopup.tscn" id="6_atb6m"]
 [ext_resource type="PackedScene" uid="uid://cbyakdbvjqyxv" path="res://assets/scenes/UIComponents/Popup/SettingsPopup.tscn" id="9_yuba1"]
 
 [node name="UI" type="CanvasLayer"]
@@ -54,13 +55,20 @@ layout_mode = 1
 
 [node name="MonstersPopup" parent="Control" instance=ExtResource("5_3wa4d")]
 layout_mode = 1
+scale = Vector2(1e-05, 1e-05)
+
+[node name="BuildingPopup" parent="Control" instance=ExtResource("6_atb6m")]
+layout_mode = 1
 
 [connection signal="pressed" from="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings/SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings/SettingButton" to="Control/SettingsPopup" method="_on_setting_button_pressed"]
+[connection signal="pressed" from="Control/GlobalMargin/BottomBar/BottomBar/TopButton/MoreButton/BuildingsButton" to="." method="_on_buildings_button_pressed"]
+[connection signal="pressed" from="Control/GlobalMargin/BottomBar/BottomBar/TopButton/MoreButton/BuildingsButton" to="Control/BuildingPopup" method="_on_buildings_button_pressed"]
 [connection signal="pressed" from="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton/MonstersButton" to="." method="_on_monsters_button_pressed"]
 [connection signal="pressed" from="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton/MonstersButton" to="Control/MonstersPopup" method="_on_monsters_button_pressed"]
 [connection signal="pressed" from="Control/SettingsPopup/PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseSettingsPopup" to="." method="_on_close_settings_popup_pressed"]
 [connection signal="pressed" from="Control/MonstersPopup/PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseMonstersPopup" to="." method="_on_close_monsters_popup_pressed"]
+[connection signal="pressed" from="Control/BuildingPopup/PanelContainer/VBoxContainer/TopBar/MarginContainer/CloseBuildingPopup" to="." method="_on_close_building_popup_pressed"]
 
 [editable path="Control/GlobalMargin/TopBar"]
 [editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/MonsterIndicator"]
@@ -69,6 +77,12 @@ layout_mode = 1
 [editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings"]
 [editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/SuccessButton"]
 [editable path="Control/GlobalMargin/BottomBar"]
+[editable path="Control/GlobalMargin/BottomBar/BottomBar/TopButton/MoreButton"]
 [editable path="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton"]
+[editable path="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/BuildingItem"]
+[editable path="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/BuildingItem/MarginContainer/HBoxContainer/BuildingPreview"]
+[editable path="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/BuildingItem/MarginContainer/HBoxContainer/Description"]
+[editable path="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/BuildingItem/MarginContainer/HBoxContainer/BuyButton"]
 [editable path="Control/SettingsPopup"]
 [editable path="Control/MonstersPopup"]
+[editable path="Control/BuildingPopup"]

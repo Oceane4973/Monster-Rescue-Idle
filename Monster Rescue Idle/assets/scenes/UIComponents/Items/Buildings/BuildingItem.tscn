@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2utwockrlnbi"]
+[gd_scene load_steps=6 format=3 uid="uid://c2utwockrlnbi"]
 
+[ext_resource type="Script" path="res://assets/scripts/UIComponents/Items/Buildings/BuildingItem.gd" id="1_bpml6"]
 [ext_resource type="PackedScene" uid="uid://b4iktin3cbhm" path="res://assets/scenes/UIComponents/Items/Buildings/BuildingPreview.tscn" id="1_xbjb1"]
 [ext_resource type="PackedScene" uid="uid://cm5f0rd5dpdqk" path="res://assets/scenes/UIComponents/Items/Buildings/BuildingDescription.tscn" id="2_0rbwf"]
 [ext_resource type="PackedScene" uid="uid://drr2nh6igo752" path="res://assets/scenes/UIComponents/Buttons/BuyButton.tscn" id="3_mpq2w"]
@@ -17,10 +18,16 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="BuildingItem" type="PanelContainer"]
+[node name="BuildingItem" type="PanelContainer" node_paths=PackedStringArray("name_node", "description_node", "benefice_node", "price_node", "niv_node", "img")]
 size_flags_horizontal = 3
-size_flags_vertical = 6
 theme_override_styles/panel = SubResource("StyleBoxFlat_0iqrx")
+script = ExtResource("1_bpml6")
+name_node = NodePath("MarginContainer/HBoxContainer/Description/HBoxContainer/Nom")
+description_node = NodePath("MarginContainer/HBoxContainer/Description/DescriptionLabel")
+benefice_node = NodePath("MarginContainer/HBoxContainer/Description/HBoxContainer/Benefice")
+price_node = NodePath("MarginContainer/HBoxContainer/BuyButton/MarginContainer/PossibleSell/MoneyPerSec/Label")
+niv_node = NodePath("MarginContainer/HBoxContainer/BuildingPreview/LevelContainer/Label")
+img = NodePath("MarginContainer/HBoxContainer/BuildingPreview/TextureRect")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -38,8 +45,15 @@ size_flags_vertical = 0
 [node name="BuildingPreview" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_xbjb1")]
 layout_mode = 2
 
-[node name="BuildingDescription" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_0rbwf")]
+[node name="TextureRect" parent="MarginContainer/HBoxContainer/BuildingPreview" index="0"]
+expand_mode = 5
+
+[node name="Description" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_0rbwf")]
 layout_mode = 2
 
 [node name="BuyButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_mpq2w")]
 layout_mode = 2
+
+[editable path="MarginContainer/HBoxContainer/BuildingPreview"]
+[editable path="MarginContainer/HBoxContainer/Description"]
+[editable path="MarginContainer/HBoxContainer/BuyButton"]

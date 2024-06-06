@@ -5,17 +5,29 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/separation = -1
 
-[node name="Benefice" type="Label" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Benefice" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 22
 text = "+200
 "
 
-[node name="DescriptionLabel" type="Label" parent="."]
+[node name="Nom" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 14
-text = "Augmentation de l'infrastructure XXXXXXXXX 
+text = "Clinique
+"
+autowrap_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.113725, 0.113725, 0.113725, 1)
+theme_override_font_sizes/font_size = 12
+text = "Augmentation de l'infrastructure
 "
 autowrap_mode = 2
