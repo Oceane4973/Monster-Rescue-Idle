@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt2duhrls634g"]
+
+[ext_resource type="Texture2D" uid="uid://ws1bka2weakr" path="res://assets/textures/Visitor.png" id="1_j7arl"]
+
+[node name="Visiteur" type="Sprite3D"]
+billboard = 1
+texture_filter = 4
+texture = ExtResource("1_j7arl")

@@ -16,6 +16,7 @@ func _ready():
 	player_data = get_node("/root/PlayerData")
 	ui_data.chemin = chemin
 	loadGame();
+	load_buildings();
 
 func _physics_process(delta):
 	# Référence : https://forum.godotengine.org/t/how-to-get-all-children-from-a-node/18587
@@ -116,3 +117,11 @@ func _add_monster(monster : Monster):
 	suivi_chemin.loop = true;
 	suivi_chemin.add_child(assets)
 	chemin.add_child(suivi_chemin)
+
+func load_buildings():
+	for i in player_data.list_Of_Building:
+		if i.name == "Accueil":
+			var building = load(i.model_src).instantiate()
+			add_child(building);
+			building.transform.origin = Vector3(i.x, i.y, i.z)
+			building.scale = Vector3(i.scale, i.scale, i.scale)
