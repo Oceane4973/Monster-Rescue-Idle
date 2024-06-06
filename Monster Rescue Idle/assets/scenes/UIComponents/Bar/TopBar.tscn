@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b52lu5uoev5mb"]
+[gd_scene load_steps=15 format=3 uid="uid://b52lu5uoev5mb"]
 
 [ext_resource type="Script" path="res://assets/scripts/UIComponents/Bar/TopBar.gd" id="1_frrx5"]
 [ext_resource type="PackedScene" uid="uid://c6tdfqqfn4dv2" path="res://assets/scenes/UIComponents/Indicators/MonsterIndicator.tscn" id="1_un2h8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://80yjv46k1bbu" path="res://assets/scenes/UIComponents/Indicators/MoneyIndicator.tscn" id="3_g4faj"]
 [ext_resource type="PackedScene" uid="uid://bqjttve04r6ve" path="res://assets/scenes/UIComponents/Buttons/SettingsButton.tscn" id="4_8u2mw"]
 [ext_resource type="PackedScene" uid="uid://bn05h26lokoyr" path="res://assets/scenes/UIComponents/Buttons/SuccessButton.tscn" id="5_j7tcg"]
+[ext_resource type="Texture2D" uid="uid://bqjns132bvpr0" path="res://assets/textures/rotation.png" id="8_xilhv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bups4"]
 content_margin_left = 20.0

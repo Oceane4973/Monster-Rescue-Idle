@@ -10,6 +10,9 @@ var list_Of_Monsters = [
 		var monsters = Monster.list_from_json(value)
 		list_Of_Monsters = monsters;
 
+var points: Dictionary = {};
+var zoom: float
+
 func _ready():
 	money = 0;
 	prestance = 0;
@@ -17,6 +20,7 @@ func _ready():
 func _process(delta):
 	money += 1
 	prestance += 1
+	print(points)
 
 func save():
 	var value = {

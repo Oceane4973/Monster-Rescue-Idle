@@ -10,16 +10,18 @@ extends Node3D
 @export var min_x_rotation = -1
 @export var min_y_translation = -8
 @export var max_y_translation = 16
-@export var min_x_translation = -48
-@export var max_x_translation = 48
+@export var min_xz_translation = -48
+@export var max_xz_translation = 48
 var start_dist: float
 var touch_points: Dictionary = {}
 var current_delta = 0;
 
 var zoom = 8.0
+var player_data = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player_data = get_node("/root/PlayerData")
 	#rotate_object_local(Vector3.UP, 0)
 	#$Centre.rotate_object_local(Vector3.RIGHT, 0)
 	scale = Vector3.ONE * zoom
@@ -35,25 +37,26 @@ func _handle_touch(event: InputEventScreenTouch):
 		touch_points[event.index] = event.position
 	else:
 		touch_points.erase(event.index)
-	#if touch_points.size() == 2:
-	#	var touch_point_positions = touch_points.values()
-	#	start_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
-	#	start_dist = 0
-	#return
+	if touch_points.size() == 2:
+		var touch_point_positions = touch_points.values()
+		start_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
+		start_dist = 0
 
 func _handle_drag(event: InputEventScreenDrag):
 	touch_points[event.index] = event.position
+	player_data.points = touch_points;
 	if touch_points.size() == 1:
 		# Référence : https://www.youtube.com/watch?v=5Kjw8_JNPv8
 		var x_rotation = event.relative.y * 0.05
 		var y_rotation = event.relative.x * 0.05
 		rotateCamera(-y_rotation, -x_rotation)
 	# Handle 2 touch points
-	#if touch_points.size() == 2:
-	#	var touch_point_positions = touch_points.values()
-	#	var current_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
-	#	var zoom_factor = start_dist / current_dist
-	#	zoom = zoom / zoom_factor
+	if touch_points.size() == 2:
+		var touch_point_positions = touch_points.values()
+		var current_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
+		var zoom_factor = start_dist / current_dist
+		zoom = zoom / zoom_factor
+		zoomCamera();
 
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -66,8 +69,7 @@ func _unhandled_input(event):
 		zoom -= zoom_speed
 	if event.is_action_pressed("cam_zoom_out"):
 		zoom += zoom_speed
-	zoom = clamp(zoom, min_zoom, max_zoom)
-	scale = Vector3.ONE * zoom
+	zoomCamera();
 
 func get_input_keyboard():
 	var x_translation = 0
@@ -98,8 +100,17 @@ func translateCamera(x_translation, y_translation):
 		transform.origin.y = min_y_translation;
 	if(transform.origin.y > max_y_translation):
 		transform.origin.y = max_y_translation;
-	if(transform.origin.x < min_x_translation):
-		transform.origin.x = min_x_translation;
-	if(transform.origin.x > max_x_translation):
-		transform.origin.x = max_x_translation;
+	if(transform.origin.x < min_xz_translation):
+		transform.origin.x = min_xz_translation;
+	if(transform.origin.z < min_xz_translation):
+		transform.origin.z = min_xz_translation;
+	if(transform.origin.x > max_xz_translation):
+		transform.origin.x = max_xz_translation;
+	if(transform.origin.z > max_xz_translation):
+		transform.origin.z = max_xz_translation;
 	print("Newposition of camera : ", transform.origin)
+
+func zoomCamera():
+	zoom = clamp(zoom, min_zoom, max_zoom)
+	player_data.zoom = zoom
+	scale = Vector3.ONE * zoom
