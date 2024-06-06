@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Main.gd" id="1_h0ela"]
 [ext_resource type="PackedScene" uid="uid://bx4te5nsiqd76" path="res://assets/scenes/Camera.tscn" id="1_tpw1r"]
-[ext_resource type="PackedScene" uid="uid://bt2duhrls634g" path="res://assets/scenes/Visiteur.tscn" id="2_544it"]
+[ext_resource type="PackedScene" uid="uid://bt2duhrls634g" path="res://assets/scenes/Entities/Visiteur.tscn" id="2_544it"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="4_g82k1"]
 [ext_resource type="PackedScene" uid="uid://dwqgbh2u4ior2" path="res://assets/scenes/UIComponents/UI.tscn" id="4_r4evu"]
 [ext_resource type="Resource" path="res://hterrain/data.hterrain" id="5_mbmye"]
@@ -329,10 +329,7 @@ mesh = SubResource("BoxMesh_y8xqu")
 [node name="Control" parent="UI" index="0"]
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings/SettingButton" to="UI/Control/SettingsPopup" method="_on_setting_button_pressed"]
 [connection signal="pressed" from="UI/Control/GlobalMargin/TopBar/TopBar/VBoxContainer/LockRotationButton/LockRotationButton" to="Camera" method="_on_lock_rotation_button_pressed"]
-[connection signal="pressed" from="UI/Control/GlobalMargin/BottomBar/BottomBar/TopButton/MoreButton/BuildingsButton" to="UI/Control/BuildingPopup" method="_on_buildings_button_pressed"]
-[connection signal="pressed" from="UI/Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton/MonstersButton" to="UI/Control/MonstersPopup" method="_on_monsters_button_pressed"]
 
 [editable path="UI"]
 [editable path="UI/Control/GlobalMargin/TopBar"]
