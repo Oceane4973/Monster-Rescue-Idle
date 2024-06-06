@@ -65,7 +65,7 @@ func _on_buy_button_pressed():
 	if monster.is_bloqued() == false and monster.price <= player_data.money and monster.currentNB < monster.maxNB:
 		player_data.money -= monster.price
 		player_data.money_per_sec += monster.benefice
-		monster.currentNB = 1
+		monster.currentNB += 1
 		monster.price = monster.price * 1.6
 		monster.benefice = monster.benefice * 1.3
 		load_monster_class(monster)
