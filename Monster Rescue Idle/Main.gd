@@ -3,9 +3,11 @@ extends Area3D
 #Référence : https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
 const SAVE_GAME_PATH := "user://savegame.save"
 const move_speed := 4.0
+var num_slime: int = 0;
 var player_data = null
 @onready var monsters_popup = $UI/Control/MonstersPopup
 @onready var buildings_popup = $UI/Control/BuildingPopup
+@onready var chemin = $CheminVisiteurs
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,10 +16,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	load_slime_neco_arc();
 
 func _physics_process(delta):
-	$CheminVisiteurs/SuiviChemin.progress += move_speed * delta
+	# Référence : https://forum.godotengine.org/t/how-to-get-all-children-from-a-node/18587
+	for _i in chemin.get_children():
+		_i.progress += move_speed * delta
 
 func _notification(what) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST || what == NOTIFICATION_WM_GO_BACK_REQUEST:
@@ -98,3 +102,15 @@ func loadGame() -> void:
 				
 	monsters_popup.instantiate_view()
 	buildings_popup.instantiate_view()
+
+func load_slime_neco_arc():
+	if(num_slime < player_data.list_Of_Monsters.size()):
+		while(num_slime < player_data.list_Of_Monsters.size()):
+			var slime = load("res://assets/3d_models/neco_slime.glb").instantiate();
+			var suivi_chemin: PathFollow3D = PathFollow3D.new()
+			var value_progress: float = randi_range(0, 100)
+			suivi_chemin.progress = value_progress
+			suivi_chemin.loop = true;
+			suivi_chemin.add_child(slime);
+			chemin.add_child(suivi_chemin)
+			num_slime = num_slime+1
