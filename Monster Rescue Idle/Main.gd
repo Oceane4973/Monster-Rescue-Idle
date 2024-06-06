@@ -5,6 +5,7 @@ const SAVE_GAME_PATH := "user://savegame.save"
 const move_speed := 4.0
 var player_data = null
 @onready var monsters_popup = $UI/Control/MonstersPopup
+@onready var buildings_popup = $UI/Control/BuildingPopup
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -96,3 +97,4 @@ func loadGame() -> void:
 				new_object.set(i, node_data[i])
 				
 	monsters_popup.instantiate_view()
+	buildings_popup.instantiate_view()

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0vrqcmee4pdd"]
+[gd_scene load_steps=5 format=3 uid="uid://d0vrqcmee4pdd"]
 
+[ext_resource type="Script" path="res://assets/scripts/UIComponents/Bar/BottomBar.gd" id="1_exci1"]
 [ext_resource type="PackedScene" uid="uid://bw1c51lhmvbv1" path="res://assets/scenes/UIComponents/Buttons/MoreButton.tscn" id="1_pv46q"]
 [ext_resource type="PackedScene" uid="uid://wfd3l4tfjb8m" path="res://assets/scenes/UIComponents/Buttons/MonstersButton.tscn" id="2_2s0yx"]
 [ext_resource type="PackedScene" uid="uid://c2utwockrlnbi" path="res://assets/scenes/UIComponents/Items/Buildings/BuildingItem.tscn" id="3_wb4gv"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("1_exci1")
 
 [node name="BottomBar" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -53,3 +55,8 @@ layout_mode = 2
 
 [node name="BuildingItem" parent="BottomBar/Bar/HBoxContainer" instance=ExtResource("3_wb4gv")]
 layout_mode = 2
+
+[editable path="BottomBar/Bar/HBoxContainer/BuildingItem"]
+[editable path="BottomBar/Bar/HBoxContainer/BuildingItem/MarginContainer/HBoxContainer/BuildingPreview"]
+[editable path="BottomBar/Bar/HBoxContainer/BuildingItem/MarginContainer/HBoxContainer/Description"]
+[editable path="BottomBar/Bar/HBoxContainer/BuildingItem/MarginContainer/HBoxContainer/BuyButton"]
