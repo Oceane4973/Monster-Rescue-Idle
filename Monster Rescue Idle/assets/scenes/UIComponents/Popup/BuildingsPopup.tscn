@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://1l6r6catb1ov"]
+[gd_scene load_steps=9 format=3 uid="uid://keo7u7ucdp7n"]
 
 [ext_resource type="Script" path="res://assets/scripts/UIComponents/Popup/BuildingsPopupAnimation.gd" id="1_p73j7"]
 [ext_resource type="Texture2D" uid="uid://bqal21yy8jd2k" path="res://assets/textures/x.png" id="2_itjj8"]

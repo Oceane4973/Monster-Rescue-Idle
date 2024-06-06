@@ -82,6 +82,8 @@ layout_mode = 2
 [node name="LockRotationButton" parent="TopBar/VBoxContainer" instance=ExtResource("7_8a57x")]
 layout_mode = 2
 
+[connection signal="pressed" from="TopBar/VBoxContainer/LockRotationButton/LockRotationButton" to="." method="_on_lock_rotation_button_pressed"]
+
 [editable path="TopBar/VBoxContainer/Bar/Informations/MonsterIndicator"]
 [editable path="TopBar/VBoxContainer/Bar/Informations/PrestanceIndicator"]
 [editable path="TopBar/VBoxContainer/Bar/Informations/MoneyIndicator"]

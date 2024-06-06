@@ -3,20 +3,19 @@ extends Area3D
 #Référence : https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
 const SAVE_GAME_PATH := "user://savegame.save"
 const move_speed := 4.0
-var num_slime: int = 0;
-var player_data = null
+var player_data : PlayerData = null
+var ui_data : UiData = null
 @onready var monsters_popup = $UI/Control/MonstersPopup
 @onready var buildings_popup = $UI/Control/BuildingPopup
-@onready var chemin = $CheminVisiteurs
+#@onready var chemin = $CheminVisiteurs
+@export var chemin: Path3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ui_data = get_node("/root/UiData")
 	player_data = get_node("/root/PlayerData")
+	ui_data.chemin = chemin
 	loadGame();
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	load_slime_neco_arc();
 
 func _physics_process(delta):
 	# Référence : https://forum.godotengine.org/t/how-to-get-all-children-from-a-node/18587
@@ -102,15 +101,18 @@ func loadGame() -> void:
 				
 	monsters_popup.instantiate_view()
 	buildings_popup.instantiate_view()
+	load_monsters()
 
-func load_slime_neco_arc():
-	if(num_slime < player_data.list_Of_Monsters.size()):
-		while(num_slime < player_data.list_Of_Monsters.size()):
-			var slime = load("res://assets/3d_models/neco_slime.glb").instantiate();
-			var suivi_chemin: PathFollow3D = PathFollow3D.new()
-			var value_progress: float = randi_range(0, 100)
-			suivi_chemin.progress = value_progress
-			suivi_chemin.loop = true;
-			suivi_chemin.add_child(slime);
-			chemin.add_child(suivi_chemin)
-			num_slime = num_slime+1
+func load_monsters():
+	for monster in player_data.list_Of_Monsters :
+		for nb in monster.currentNB :
+			_add_monster(monster)
+		
+func _add_monster(monster : Monster):
+	var assets = load(monster.model_src).instantiate();
+	var suivi_chemin: PathFollow3D = PathFollow3D.new()
+	var value_progress: float = randi_range(0, 100)
+	suivi_chemin.progress = value_progress
+	suivi_chemin.loop = true;
+	suivi_chemin.add_child(assets)
+	chemin.add_child(suivi_chemin)

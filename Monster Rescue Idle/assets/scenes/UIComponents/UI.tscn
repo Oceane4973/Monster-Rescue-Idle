@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b52lu5uoev5mb" path="res://assets/scenes/UIComponents/Bar/TopBar.tscn" id="2_ap5qj"]
 [ext_resource type="PackedScene" uid="uid://d0vrqcmee4pdd" path="res://assets/scenes/UIComponents/Bar/BottomBar.tscn" id="3_pr20q"]
 [ext_resource type="PackedScene" uid="uid://bppf23giu6373" path="res://assets/scenes/UIComponents/Popup/MonstersPopup.tscn" id="5_3wa4d"]
-[ext_resource type="PackedScene" uid="uid://1l6r6catb1ov" path="res://assets/scenes/UIComponents/Popup/BuildingsPopup.tscn" id="6_atb6m"]
+[ext_resource type="PackedScene" uid="uid://keo7u7ucdp7n" path="res://assets/scenes/UIComponents/Popup/BuildingsPopup.tscn" id="6_atb6m"]
 [ext_resource type="PackedScene" uid="uid://cbyakdbvjqyxv" path="res://assets/scenes/UIComponents/Popup/SettingsPopup.tscn" id="9_yuba1"]
 
 [node name="UI" type="CanvasLayer"]

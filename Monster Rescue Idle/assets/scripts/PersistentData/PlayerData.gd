@@ -1,7 +1,9 @@
 extends Node
 
 @export var money: int = 0
+@export var money_per_sec: int = 10
 @export var prestance: int = 0;
+var time_accumulator : float = 0.0  # Accumulateur de temps
 
 var list_Of_Building = [
 	Building.new("Clinique", "Parfait pour soigner vos monstres", 500, "res://assets/textures/avatar.png", 1, 10),
@@ -12,8 +14,8 @@ var list_Of_Building = [
 		list_Of_Building = buildings;
 
 var list_Of_Monsters = [
-	Monster.new("slime", "A slimy creature", 500, "res://assets/textures/avatar.png", 5, 2, 10),
-	Monster.new("slime", "A slimy creature", 10, "res://assets/textures/avatar.png", 5, 2, 10)
+	Monster.new("slime", "A slimy creature", 50, "res://assets/textures/avatar.png", 1, 2, 15, "res://assets/3d_models/neco_slime.glb"),
+	Monster.new("slime", "A slimy creature", 500, "res://assets/textures/avatar.png", 0, 10, 10, "res://assets/3d_models/neco_slime.glb")
 ] :
 	set (value):
 		var monsters = Monster.list_from_json(value)
@@ -27,8 +29,11 @@ func _ready():
 	prestance = 0;
 
 func _process(delta):
-	money += 1
-	if prestance < 500 :
+	time_accumulator += delta
+	if time_accumulator >= 1.0:
+		money += money_per_sec
+		time_accumulator -= 1.0
+	if prestance < 500:
 		prestance += 1
 	
 func get_best_building() -> Building:
@@ -73,6 +78,7 @@ func save():
 	var value = {
 		"money": money,
 		"prestance": prestance,
+		"money_per_sec": money_per_sec,
 		"list_Of_Monsters" : Monster.list_to_json(list_Of_Monsters),
 		"list_Of_Building" : Building.list_to_json(list_Of_Building)
 	}

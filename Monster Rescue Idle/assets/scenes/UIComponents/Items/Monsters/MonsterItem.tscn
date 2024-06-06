@@ -110,4 +110,6 @@ text = "10/100
 [node name="BuyButton" parent="HBoxContainer" instance=ExtResource("3_joie6")]
 layout_mode = 2
 
+[connection signal="pressed" from="HBoxContainer/BuyButton/BuyButton" to="." method="_on_buy_button_pressed"]
+
 [editable path="HBoxContainer/BuyButton"]
