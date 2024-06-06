@@ -39,3 +39,5 @@ func _process(delta):
 	_update_prestance_label();
 	_update_rotate_icon();
 
+func _on_lock_rotation_button_pressed():
+	ui_data.rotating = !ui_data.rotating;

@@ -57,7 +57,7 @@ func _handle_drag(event: InputEventScreenDrag):
 		else:
 			var x_translation = event.relative.x * 0.005
 			var y_translation = event.relative.y * 0.005
-			translateCamera(-x_translation, -y_translation);
+			translateCamera(-x_translation, y_translation);
 	# Handle 2 touch points
 	#if touch_points.size() == 2:
 	#	var touch_point_positions = touch_points.values()
@@ -120,7 +120,3 @@ func zoomCamera():
 	zoom = clamp(zoom, min_zoom, max_zoom)
 	player_data.zoom = zoom
 	scale = Vector3.ONE * zoom
-
-
-func _on_lock_rotation_button_pressed():
-	ui_data.rotating = !ui_data.rotating;

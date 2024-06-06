@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://80yjv46k1bbu" path="res://assets/scenes/UIComponents/Indicators/MoneyIndicator.tscn" id="3_g4faj"]
 [ext_resource type="PackedScene" uid="uid://bqjttve04r6ve" path="res://assets/scenes/UIComponents/Buttons/SettingsButton.tscn" id="4_8u2mw"]
 [ext_resource type="PackedScene" uid="uid://bn05h26lokoyr" path="res://assets/scenes/UIComponents/Buttons/SuccessButton.tscn" id="5_j7tcg"]
-[ext_resource type="PackedScene" uid="uid://hp3cty3pa0pf" path="res://assets/scenes/UIComponents/Buttons/LockRotationButton.tscn" id="7_8a57x"]
+[ext_resource type="PackedScene" path="res://assets/scenes/UIComponents/Buttons/LockRotationButton.tscn" id="7_s0v27"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bups4"]
 content_margin_left = 20.0
@@ -79,8 +79,10 @@ layout_mode = 2
 [node name="SuccessButton" parent="TopBar/VBoxContainer" instance=ExtResource("5_j7tcg")]
 layout_mode = 2
 
-[node name="LockRotationButton" parent="TopBar/VBoxContainer" instance=ExtResource("7_8a57x")]
+[node name="LockRotationButton" parent="TopBar/VBoxContainer" instance=ExtResource("7_s0v27")]
 layout_mode = 2
+
+[connection signal="pressed" from="TopBar/VBoxContainer/LockRotationButton/LockRotationButton" to="." method="_on_lock_rotation_button_pressed"]
 
 [editable path="TopBar/VBoxContainer/Bar/Informations/MonsterIndicator"]
 [editable path="TopBar/VBoxContainer/Bar/Informations/PrestanceIndicator"]
