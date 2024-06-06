@@ -9,13 +9,14 @@ var img_src : String
 var model_src : String
 var niv : int
 var benefice : int
+var max_niv : int
 var x: float
 var y: float
 var z: float
 var scale: float
 
 # Constructeur
-func _init(name: String = "", description: String = "", price: int = 0, img_src: String = "", model_src: String = "", niv: int = 0, benefice: int = 0, x: float = 0.0, y: float = 0.0, z: float = 0.0, scale: float = 0.0):
+func _init(name: String = "", description: String = "", price: int = 0, img_src: String = "", model_src: String = "", niv: int = 0, benefice: int = 0, x: float = 0.0, y: float = 0.0, z: float = 0.0, scale: float = 0.0, max_niv: int = 0):
 	self.name = name
 	self.description = description
 	self.price = price
@@ -27,6 +28,7 @@ func _init(name: String = "", description: String = "", price: int = 0, img_src:
 	self.y = y
 	self.z = z
 	self.scale = scale
+	self.max_niv = max_niv
 
 # Méthode pour convertir en dictionnaire
 func to_dict() -> Dictionary:
@@ -42,11 +44,12 @@ func to_dict() -> Dictionary:
 		"y": y,
 		"z": z,
 		"scale": scale,
+		"max_niv" : max_niv
 	}
 
 # Méthode pour créer un objet à partir d'un dictionnaire
 static func from_dict(dict: Dictionary) -> Building:
-	return Building.new(dict.get("name", ""), dict.get("description", ""), dict.get("price", 0), dict.get("img_src", ""), dict.get("model_src", ""), dict.get("niv", 0), dict.get("benefice", 0), dict.get("x", 0.0), dict.get("y", 0.0), dict.get("z", 0.0), dict.get("scale", 0.0))
+	return Building.new(dict.get("name", ""), dict.get("description", ""), dict.get("price", 0), dict.get("img_src", ""), dict.get("model_src", ""), dict.get("niv", 0), dict.get("benefice", 0), dict.get("x", 0.0), dict.get("y", 0.0), dict.get("z", 0.0), dict.get("scale", 0.0),  dict.get("max_niv", 0))
 
 # Méthode pour convertir une liste de Monster en JSON
 static func list_to_json(buildings: Array) -> String:
