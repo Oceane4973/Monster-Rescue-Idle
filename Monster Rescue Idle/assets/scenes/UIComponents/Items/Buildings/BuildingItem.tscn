@@ -54,6 +54,8 @@ layout_mode = 2
 [node name="BuyButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_mpq2w")]
 layout_mode = 2
 
+[connection signal="pressed" from="MarginContainer/HBoxContainer/BuyButton/BuyButton" to="." method="_on_buy_button_pressed"]
+
 [editable path="MarginContainer/HBoxContainer/BuildingPreview"]
 [editable path="MarginContainer/HBoxContainer/Description"]
 [editable path="MarginContainer/HBoxContainer/BuyButton"]

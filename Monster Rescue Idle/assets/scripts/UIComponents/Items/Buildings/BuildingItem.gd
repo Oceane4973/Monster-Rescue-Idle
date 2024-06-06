@@ -33,28 +33,37 @@ func load_building_class(the_building : Building):
 			img.texture = texture
 	
 
-func change_panel_container_color(new_color: Color) -> void:
-	var stylebox = buyButtonPanel.get_theme_stylebox("panel")
-	if stylebox == null:
-		stylebox = StyleBoxFlat.new()
-	stylebox.bg_color = new_color
-	buyButtonPanel.add_theme_stylebox_override("panel", stylebox)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if building == null :
-		return
-		
-	if building.is_bloqued() :
+	update_view()
+
+func update_view():
+	if building.is_bloqued():
 		buyButtonBloqued.visible = true
 		buyButtonSell.visible = false
 		change_panel_container_color(gray_color)
-	else :
-		if building.price > player_data.money:
-			change_panel_container_color(gray_color)
+	else:
+		if building.niv < building.max_niv : 
+			if building.price > player_data.money:
+				change_panel_container_color(gray_color)
+			else:
+				change_panel_container_color(white_color)
+			buyButtonBloqued.visible = false
+			buyButtonSell.visible = true
 		else : 
-			change_panel_container_color(white_color)
-		buyButtonBloqued.visible = false
-		buyButtonSell.visible = true
-			
-		
+			$MarginContainer/HBoxContainer/BuyButton/MarginContainer/LockedSell/MoneyPerSec/Label.text = "MAX."
+			buyButtonBloqued.visible = true
+			buyButtonSell.visible = false
+			change_panel_container_color(gray_color)
+
+func change_panel_container_color(new_color: Color) -> void:
+	buyButtonPanel.modulate = new_color
+	
+func _on_buy_button_pressed():
+	if building.is_bloqued() == false and building.price <= player_data.money and building.niv < building.max_niv:
+		player_data.money -= building.price
+		player_data.money_per_sec += building.benefice
+		building.niv += 1
+		building.price = building.price * 1.55
+		building.benefice = building.benefice * 1.4
+		load_building_class(building)
+		update_view()
