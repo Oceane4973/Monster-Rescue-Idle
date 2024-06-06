@@ -41,7 +41,7 @@ func to_dict() -> Dictionary:
 		"x": x,
 		"y": y,
 		"z": z,
-		"scale_x": scale,
+		"scale": scale,
 	}
 
 # Méthode pour créer un objet à partir d'un dictionnaire
