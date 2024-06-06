@@ -76,6 +76,7 @@ layout_mode = 1
 [editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/MoneyIndicator"]
 [editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/Bar/Informations/Settings"]
 [editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/SuccessButton"]
+[editable path="Control/GlobalMargin/TopBar/TopBar/VBoxContainer/LockRotationButton"]
 [editable path="Control/GlobalMargin/BottomBar"]
 [editable path="Control/GlobalMargin/BottomBar/BottomBar/TopButton/MoreButton"]
 [editable path="Control/GlobalMargin/BottomBar/BottomBar/Bar/HBoxContainer/MonstersButton"]
